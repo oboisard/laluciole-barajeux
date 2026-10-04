@@ -1,0 +1,111 @@
+/* Master bouton (Figma 1:182) : 18/12 px de padding, rayon 32, ombre portée. */
+.button {
+  --btn-bg: var(--noir);
+  --btn-fg: var(--blanc);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: var(--radius-btn);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  box-shadow: var(--shadow-btn);
+  font-family: var(--font-bouton);
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.111;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.25s var(--ease-spring),
+    box-shadow 0.25s var(--ease-out),
+    background-color 0.2s ease;
+}
+
+.icon {
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-spring);
+}
+
+@media (hover: hover) {
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.22);
+  }
+
+  .button:hover .icon {
+    transform: translateX(3px);
+  }
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
+}
+
+.iconOnly {
+  padding: 12px;
+  min-width: 48px;
+}
+
+/* Déclinaisons (Figma 1:190) */
+.noir {
+  --btn-bg: var(--noir);
+  --btn-fg: var(--blanc);
+}
+
+.noir-jaune {
+  --btn-bg: var(--noir);
+  --btn-fg: var(--jaune);
+}
+
+.noir-bleue {
+  --btn-bg: var(--noir);
+  --btn-fg: var(--bleue);
+}
+
+.blanc {
+  --btn-bg: var(--blanc);
+  --btn-fg: var(--noir);
+}
+
+.blanc-bleue {
+  --btn-bg: var(--blanc);
+  --btn-fg: var(--fond-bleue);
+}
+
+.bleue {
+  --btn-bg: var(--fond-bleue);
+  --btn-fg: var(--blanc);
+}
+
+.orange {
+  --btn-bg: var(--fond-orange);
+  --btn-fg: var(--blanc);
+}
+
+/* Lien non renseigné (data/site.json) : non cliquable. */
+.sansLien {
+  cursor: not-allowed;
+}
+
+/* Pointillés de rappel, seulement là où on les demande (bouton « Réserver ! » du menu). */
+.signale {
+  outline: 2px dashed var(--jaune);
+  outline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .button {
+    font-size: 1rem;
+    line-height: 1.25;
+    padding: 12px 16px;
+  }
+
+  .iconOnly {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,168 @@
+/* Deux colonnes égales (Figma) : texte calé à droite de la colonne gauche,
+   paquet de photos dans la colonne droite. */
+.grille {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  column-gap: 32px;
+}
+
+.colonneTexte {
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: min(479px, 100%);
+  margin-right: clamp(24px, 5.2vw, 100px);
+}
+
+.texte {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.controles {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.zonePile {
+  padding-left: clamp(0px, 6.6vw, 127px);
+}
+
+/* Paquet : carte de 357 × 470 à 1920 px ; la boîte réserve la place de l'éventail. */
+.pile {
+  --w: clamp(240px, 18.6vw, 357px);
+  --h: calc(var(--w) * 470 / 357);
+
+  position: relative;
+  width: calc(var(--w) * 1.6);
+  height: calc(var(--h) * 1.3);
+  touch-action: pan-y;
+}
+
+.carte {
+  --tx: 0%;
+  --ty: 0%;
+  --r: 0deg;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--w);
+  height: var(--h);
+  margin: 0;
+  overflow: hidden;
+  border: 3px solid var(--bleue);
+  border-radius: var(--radius-bloc);
+  background: var(--noir);
+  box-shadow: var(--shadow-card);
+  transform: translate(var(--tx), var(--ty)) rotate(var(--r));
+  transition: transform 0.6s var(--ease-out);
+  user-select: none;
+}
+
+/* Positions de l'éventail (décalages mesurés dans Figma, en % de la carte). */
+.carte[data-position='1'] {
+  z-index: 4;
+}
+
+.carte[data-position='2'] {
+  --tx: 17.57%;
+  --ty: 4.94%;
+  --r: 6deg;
+  z-index: 3;
+}
+
+.carte[data-position='3'] {
+  --tx: 33.11%;
+  --ty: 12.95%;
+  --r: 12deg;
+  z-index: 2;
+}
+
+.carte[data-position='4'] {
+  --tx: 42.34%;
+  --ty: 20.63%;
+  --r: 16deg;
+  z-index: 1;
+}
+
+/* Au survol, l'éventail s'ouvre un peu plus, comme une main de cartes. */
+@media (hover: hover) {
+  .pile:hover .carte[data-position='1'] {
+    --r: -2deg;
+  }
+
+  .pile:hover .carte[data-position='2'] {
+    --tx: 21%;
+    --r: 8deg;
+  }
+
+  .pile:hover .carte[data-position='3'] {
+    --tx: 39%;
+    --r: 15deg;
+  }
+
+  .pile:hover .carte[data-position='4'] {
+    --tx: 50%;
+    --r: 21deg;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* object-fit : le cadrage Figma (en % de la carte) ne tombe pas pile sur les
+   proportions de la photo ; sans lui, elle serait très légèrement étirée. */
+.imageCadree {
+  position: absolute;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+@media (max-width: 1199px) {
+  .grille {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'texte' 'pile' 'controles';
+    row-gap: 32px;
+  }
+
+  /* Sur une colonne : texte, paquet, puis flèches sous le paquet. */
+  .colonneTexte {
+    display: contents;
+  }
+
+  .texte {
+    grid-area: texte;
+    max-width: 640px;
+  }
+
+  .controles {
+    grid-area: controles;
+    justify-content: center;
+  }
+
+  .zonePile {
+    grid-area: pile;
+    justify-self: center;
+    padding-left: 0;
+  }
+
+  .pile {
+    --w: clamp(200px, 32vw, 320px);
+  }
+}
+
+@media (max-width: 767px) {
+  .pile {
+    --w: min(56vw, 260px);
+  }
+}

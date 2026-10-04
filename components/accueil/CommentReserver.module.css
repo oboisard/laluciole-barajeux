@@ -1,0 +1,40 @@
+/* Bloc de contenu de 856 px avec 64 px de marge interne, aligné à gauche (Figma 23:272). */
+.contenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  max-width: 856px;
+  padding: 32px clamp(0px, 3.3vw, 64px);
+}
+
+/* Moyens de réserver : lignes espacées de 24 px. */
+.moyens {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* Intitulé puis bouton, à 24 px l'un de l'autre ; le bouton passe à la ligne sur
+   les très petits écrans. */
+.ligne {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+}
+
+/* Souligné : un lien de la même couleur que le texte doit rester repérable. La
+   marge interne agrandit la zone cliquable (44 px) sans décaler les lignes. */
+.telephone {
+  padding-block: 12px;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 767px) {
+  .contenu {
+    gap: 24px;
+    padding-block: 0;
+  }
+}

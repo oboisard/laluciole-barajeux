@@ -1,0 +1,12 @@
+/* Section 1 : hauteur de 635 px de contenu à 1920 px (Figma), centrée verticalement. */
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 1200px) {
+  .section {
+    min-height: clamp(480px, 33vw, 635px);
+  }
+}

@@ -1,0 +1,31 @@
+.page {
+  padding-top: clamp(100px, 10vw, 140px);
+}
+
+.carte {
+  --focus: var(--jaune);
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  min-height: 60vh;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 96px);
+  overflow: hidden;
+  border-radius: var(--radius-bloc);
+  background:
+    radial-gradient(circle at 80% 20%, rgba(253, 198, 0, 0.25), transparent 40%),
+    var(--noir);
+  color: var(--blanc);
+}
+
+.code {
+  font-family: var(--font-texte);
+  font-weight: 700;
+  font-size: clamp(5rem, 14vw, 12rem);
+  line-height: 0.85;
+  color: var(--jaune);
+}

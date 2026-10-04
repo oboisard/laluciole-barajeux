@@ -1,0 +1,84 @@
+.carte {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  height: 100%;
+  min-height: 360px;
+  padding: 24px 12px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--noir);
+  color: var(--blanc);
+  text-align: center;
+  transition:
+    transform 0.4s var(--ease-spring),
+    box-shadow 0.4s var(--ease-out);
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+/* En attendant les photos : fond aux couleurs du bar, placeholder centré. */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(253, 198, 0, 0.35), transparent 45%),
+    radial-gradient(circle at 75% 70%, rgba(204, 87, 11, 0.45), transparent 50%),
+    linear-gradient(160deg, #1d3b3c, var(--noir));
+}
+
+.degrade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(18, 18, 18, 0), rgba(18, 18, 18, 0.7));
+}
+
+.nom {
+  text-wrap: balance;
+}
+
+.prix {
+  color: var(--jaune);
+}
+
+/* La hauteur est donnée par la grille parente. */
+@media (max-width: 1199px) {
+  .carte {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .carte {
+    gap: 6px;
+    padding: 16px 10px;
+  }
+}
+
+@media (hover: hover) {
+  .carte:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 30px rgba(18, 18, 18, 0.28);
+  }
+
+  .carte:hover .image {
+    transform: scale(1.07);
+  }
+}

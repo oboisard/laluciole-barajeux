@@ -1,0 +1,64 @@
+.section {
+  --h-petite: clamp(380px, 24.6vw, 472px);
+  --h-grande: clamp(460px, 30.2vw, 580px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.entete {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+/* Rangée à la hauteur du grand format : la carte qui grandit ne pousse rien. */
+.cartes {
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+  height: var(--h-grande);
+}
+
+.carte {
+  flex: 1 1 0;
+  min-width: 0;
+  height: var(--h-petite);
+  transition: height 0.5s var(--ease-out);
+}
+
+@media (hover: hover) and (min-width: 1200px) {
+  .carte:hover {
+    height: var(--h-grande);
+  }
+}
+
+/* Tablette et mobile : grille de 2 colonnes, la planche (au centre) sur toute la largeur. */
+@media (max-width: 1199px) {
+  .cartes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    height: auto;
+  }
+
+  .carte {
+    height: 340px;
+  }
+
+  .centre {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .cartes {
+    gap: 12px;
+  }
+
+  .carte {
+    height: 240px;
+  }
+}

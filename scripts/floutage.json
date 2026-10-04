@@ -1,0 +1,8 @@
+{
+  "_info": "Photos dont les clients sont le sujet : flou uniforme sur toute l'image (équivalent d'un « layer blur » Figma), intégré au fichier WebP pour que la photo nette ne soit jamais servie. intensite = rayon du flou en % de la largeur de l'image (même rendu quelle que soit la taille d'affichage) ; 2 = visages méconnaissables, silhouettes lisibles. Les originaux de _sources/ restent nets.",
+  "intensite": 2,
+  "images": [
+    "evenements/soiree-loup-garou-joueurs-mains-levees.jpg",
+    "avis/salle-du-bar-joueurs-et-etageres-de-jeux.jpg"
+  ]
+}

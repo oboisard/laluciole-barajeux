@@ -1,0 +1,110 @@
+/* La section occupe toute la largeur de la page (la vague aussi) ; le contenu est
+   dans un .container. `section.section` : plus spécifique que la règle globale
+   `.section`, quel que soit l'ordre de chargement des CSS. Pas de content-visibility
+   ici : son confinement de peinture couperait la vague qui déborde de la section. */
+section.section {
+  position: relative;
+  isolation: isolate;
+  content-visibility: visible;
+}
+
+.contenu {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 3.3vw, 64px);
+}
+
+/* Vague jaune (Figma 74:482, 1920 × 983) : déborde de 71 px au-dessus de la
+   section et de 100 px en dessous à 1920 px. Largeur = celle de la page (pas
+   100vw, qui inclut la barre de défilement et créerait un défilement horizontal). */
+.vague {
+  position: absolute;
+  z-index: -1;
+  top: -3.7vw;
+  bottom: -5.21vw;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  color: var(--jaune);
+  pointer-events: none;
+}
+
+.vagueHaut,
+.vagueBas {
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  fill: currentColor;
+}
+
+.vagueHaut {
+  height: calc(100vw * 56 / 1920);
+}
+
+.vagueBas {
+  height: calc(100vw * 64 / 1920);
+}
+
+/* Recouvrement d'1 px pour éviter tout liseré entre les morceaux. */
+.vagueCorps {
+  flex: 1;
+  margin-block: -1px;
+  background: currentColor;
+}
+
+.entete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 48px;
+}
+
+.texte {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.texte p {
+  max-width: 479px;
+}
+
+.ce {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+
+/* Grande carte à gauche, puis 3 cartes de 346 px (à 1920 px). */
+.cartes {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+/* Tablette : 2 colonnes, la grande carte sur toute la largeur. */
+@media (max-width: 1199px) {
+  .cartes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .grande {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile : grille qui s'adapte à la largeur (1 colonne sur téléphone, 2 en paysage). */
+@media (max-width: 767px) {
+  .cartes {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 16px;
+  }
+
+  .grande {
+    grid-column: auto;
+  }
+}

@@ -1,0 +1,103 @@
+.carte {
+  --focus: var(--jaune);
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: clamp(440px, 27vw, 520px);
+  padding: 24px 12px;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  color: var(--blanc);
+  text-align: center;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.voile {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.4);
+  transition: background-color 0.4s ease;
+}
+
+.texte {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.titre {
+  text-wrap: balance;
+}
+
+/* Texte SEO : replié, déplié au survol ou au focus (grid 0fr → 1fr). */
+.seo {
+  display: grid;
+  grid-template-rows: 0fr;
+  max-width: 34ch;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.45s var(--ease-out),
+    opacity 0.35s ease;
+}
+
+.seo > p {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.carte:hover .seo,
+.carte:focus-within .seo {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.carte:hover .image,
+.carte:focus-within .image {
+  transform: scale(1.06);
+}
+
+.carte:hover .voile,
+.carte:focus-within .voile {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* Écrans tactiles : pas de survol, le texte est toujours visible. */
+@media (hover: none) {
+  .seo {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .voile {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.cta {
+  flex-shrink: 0;
+}
+
+/* Mobile : la carte prend la hauteur de son contenu (texte SEO toujours visible). */
+@media (max-width: 767px) {
+  .carte {
+    height: auto;
+    min-height: 380px;
+    padding: 20px 12px;
+  }
+}

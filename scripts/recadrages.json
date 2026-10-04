@@ -1,0 +1,12 @@
+{
+  "_info": "Recadrages (fractions de l'image orientée). « principal » : remplace l'image servie (ex. sortir une personne du cadre). « suffixe » : variante générée en plus (ex. héro portrait pour mobile).",
+  "hero/etageres-jeux-de-societe-bar-a-jeux-merignac.jpg": [
+    { "suffixe": "-mobile", "x": 0.27, "y": 0, "w": 0.42, "h": 1 }
+  ],
+  "carte/dessert-chocolat-et-chantilly.jpg": [
+    { "principal": true, "x": 0.18, "y": 0.3, "w": 0.64, "h": 0.55 }
+  ],
+  "avis/comptoir-du-bar-suspensions-et-plantes.jpg": [
+    { "principal": true, "x": 0.26, "y": 0, "w": 0.74, "h": 1 }
+  ]
+}

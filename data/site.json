@@ -1,0 +1,57 @@
+{
+  "nom": "La Luciole",
+  "nomAffiche": "La luciole bar",
+  "description": "Bar à jeux de société à Mérignac, plus de 200 jeux, cocktails et soirées à thème.",
+  "url": "",
+  "telephone": {
+    "affiche": "07 68 32 62 96",
+    "international": "+33 7 68 32 62 96"
+  },
+  "email": "",
+  "adresse": {
+    "rue": "4 rue Beaumarchais",
+    "codePostal": "33700",
+    "ville": "Mérignac",
+    "pays": "FR"
+  },
+  "geo": {
+    "latitude": 44.8412955,
+    "longitude": -0.6486558
+  },
+  "horaires": [
+    { "jour": "Monday", "label": "Lundi", "ouverture": null, "fermeture": null },
+    { "jour": "Tuesday", "label": "Mardi", "ouverture": null, "fermeture": null },
+    { "jour": "Wednesday", "label": "Mercredi", "ouverture": "17:00", "fermeture": "00:00" },
+    { "jour": "Thursday", "label": "Jeudi", "ouverture": "18:00", "fermeture": "00:00" },
+    { "jour": "Friday", "label": "Vendredi", "ouverture": "18:00", "fermeture": "01:00" },
+    { "jour": "Saturday", "label": "Samedi", "ouverture": "14:00", "fermeture": "01:00" },
+    { "jour": "Sunday", "label": "Dimanche", "ouverture": "14:00", "fermeture": "22:00" }
+  ],
+  "reseaux": {
+    "instagram": { "compte": "la.luciole.bar", "url": "https://www.instagram.com/la.luciole.bar/" },
+    "facebook": {
+      "page": "61573148016836",
+      "url": "https://www.facebook.com/p/La-Luciole-Le-Bar-%C3%A0-jeux-61573148016836/"
+    }
+  },
+  "acces": {
+    "tram": "A : arrêt Mérignac Centre",
+    "parking": ""
+  },
+  "liens": {
+    "reservation": "https://reservation.laddition.com/booking/laluciole-barajeux#/date",
+    "avisGoogle": "",
+    "cartePdf": "",
+    "devis": ""
+  },
+  "legal": {
+    "raisonSociale": "",
+    "formeJuridique": "",
+    "capital": "",
+    "siret": "",
+    "rcs": "",
+    "tva": "",
+    "siege": "",
+    "directeurPublication": ""
+  }
+}

@@ -1,0 +1,56 @@
+.essaim {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.luciole {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--taille);
+  height: var(--taille);
+  border-radius: 50%;
+  background: #fff6b8;
+  box-shadow:
+    0 0 6px 2px rgba(253, 198, 0, 0.9),
+    0 0 18px 6px rgba(253, 198, 0, 0.45);
+  opacity: 0;
+  animation:
+    luciole-derive var(--duree) ease-in-out var(--delai) infinite alternate,
+    luciole-brille calc(var(--duree) / 3) ease-in-out var(--delai) infinite;
+}
+
+@keyframes luciole-derive {
+  0% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(28px, -36px);
+  }
+  66% {
+    transform: translate(-22px, -64px);
+  }
+  100% {
+    transform: translate(16px, -96px);
+  }
+}
+
+@keyframes luciole-brille {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  40%,
+  60% {
+    opacity: 0.95;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luciole {
+    animation: none;
+    opacity: 0.6;
+  }
+}

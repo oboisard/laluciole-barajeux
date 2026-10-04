@@ -1,0 +1,61 @@
+{
+  "_info": "Un objet par événement. type : « evenement » (soirée, tournoi : schema Event) ou « actu » (annonce, nouveauté : pas de schema). Soit une date ponctuelle (date AAAA-MM-JJ + heure HH:MM), soit une récurrence hebdomadaire (recurrence.jour en anglais + recurrence.heure). Les événements datés passés sont masqués automatiquement. cta.type : reserver (réservation en ligne L'Addition), telephone, carte (lien vers /carte).",
+  "evenements": [
+    {
+      "id": "loup-garou",
+      "titre": "Loup-garou",
+      "type": "evenement",
+      "recurrence": { "jour": "Wednesday", "heure": "19:00" },
+      "date": null,
+      "heure": null,
+      "horaireLibre": null,
+      "description": "",
+      "image": "evenements/soiree-loup-garou-joueurs-mains-levees.webp",
+      "alt": "Groupe de joueurs levant la main pendant une soirée loup-garou au bar à jeux La Luciole à Mérignac",
+      "cta": { "type": "reserver", "label": "Réserver" },
+      "miseEnAvant": true
+    },
+    {
+      "id": "tournoi-donjon",
+      "titre": "Tournois Donjon",
+      "type": "evenement",
+      "recurrence": null,
+      "date": null,
+      "heure": "19:00",
+      "horaireLibre": null,
+      "description": "",
+      "image": "evenements/partie-de-cartes-vue-de-dessus.webp",
+      "alt": "Partie de jeu de cartes vue de dessus au bar La Luciole",
+      "cta": { "type": "telephone", "label": "S’inscrire" },
+      "miseEnAvant": false
+    },
+    {
+      "id": "soiree-crousty",
+      "titre": "Soirée crousty !",
+      "type": "evenement",
+      "recurrence": null,
+      "date": null,
+      "heure": "20:00",
+      "horaireLibre": null,
+      "description": "",
+      "image": "carte/tenders-panes-et-sauce.webp",
+      "alt": "Assiette de tenders panés et sa sauce servie au bar La Luciole",
+      "cta": { "type": "telephone", "label": "S’inscrire" },
+      "miseEnAvant": false
+    },
+    {
+      "id": "nouveaux-desserts",
+      "titre": "Nouveaux desserts !",
+      "type": "actu",
+      "recurrence": null,
+      "date": null,
+      "heure": null,
+      "horaireLibre": "À l’ouverture",
+      "description": "",
+      "image": "carte/dessert-chocolat-et-chantilly.webp",
+      "alt": "Dessert au chocolat nappé de chantilly servi au bar La Luciole",
+      "cta": { "type": "carte", "label": "Venez goûter" },
+      "miseEnAvant": false
+    }
+  ]
+}

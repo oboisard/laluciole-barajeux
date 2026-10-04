@@ -1,0 +1,57 @@
+.ligne {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 24px;
+  padding-block: 24px;
+}
+
+/* Style « Outfit 24 B » (20/26), gardé en 20 px gras sur mobile : bleu sur crème,
+   conforme AA seulement en « grand texte ». Style autonome (pas de classe globale)
+   pour ne pas dépendre de l'ordre de chargement des CSS. */
+.numero {
+  font-family: var(--font-texte);
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--bleue);
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.ligne:hover .numero {
+  transform: scale(1.2) rotate(-6deg);
+}
+
+.texte {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Chip capacité */
+.capacite {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius-btn);
+  background: var(--bleue);
+  color: var(--noir);
+  white-space: nowrap;
+}
+
+.capacite :global(.a-completer) {
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 767px) {
+  .ligne {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 8px 16px;
+  }
+
+  .capacite {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

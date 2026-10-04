@@ -1,0 +1,23 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 960px;
+  padding-top: clamp(120px, 12vw, 180px);
+  font-size: 1.125rem; /* texte courant 18/24 */
+  line-height: 1.3333;
+}
+
+.page section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 767px) {
+  .page {
+    gap: 32px;
+    font-size: 1rem; /* 16/24 */
+    line-height: 1.5;
+  }
+}

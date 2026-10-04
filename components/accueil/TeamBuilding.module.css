@@ -1,0 +1,101 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.titre {
+  max-width: 806px;
+}
+
+.corps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(420px, 37.3vw, 716px);
+  align-items: stretch;
+  gap: clamp(48px, 7vw, 134px);
+}
+
+.contenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  padding-block: 32px;
+}
+
+.texte {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.texte p:last-child {
+  max-width: 640px;
+}
+
+.formules {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+
+/* Visuel avec légende en surimpression (vrai texte, pas incrusté dans l'image). */
+.illustration {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: 640px;
+  padding: 32px;
+  overflow: hidden;
+  border-radius: var(--radius-bloc);
+  color: var(--blanc);
+}
+
+.image {
+  z-index: -2;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.illustration::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(57deg, rgba(0, 0, 0, 0.5) 1%, rgba(0, 0, 0, 0) 45%);
+}
+
+.illustration figcaption {
+  max-width: 520px;
+}
+
+@media (hover: hover) {
+  .illustration:hover .image {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 1199px) {
+  .corps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .illustration {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 767px) {
+  .illustration {
+    min-height: 320px;
+    padding: 20px;
+  }
+}

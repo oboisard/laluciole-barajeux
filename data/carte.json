@@ -1,0 +1,22 @@
+{
+  "_info": "Carte du bar. prix : nombre en euros (null tant qu'il n'est pas renseigné). image : clé dans data/images.json, ou null pour afficher le placeholder. alcool : true si la boisson contient de l'alcool (affiche la mention loi Évin sur la page).",
+  "categories": [
+    {
+      "id": "cocktails",
+      "titre": "Cocktails",
+      "produits": [
+        { "nom": "Americano", "composition": "Martini - Campari", "prix": null, "image": null, "alt": "Cocktail Americano servi au bar La Luciole", "alcool": true },
+        { "nom": "Apple fizz", "composition": "Jus - Pomme et Citron", "prix": null, "image": null, "alt": "Cocktail Apple fizz servi au bar La Luciole", "alcool": false },
+        { "nom": "Gin fizz", "composition": "Gin - Citron", "prix": null, "image": null, "alt": "Cocktail Gin fizz servi au bar La Luciole", "alcool": true },
+        { "nom": "Punch passion", "composition": "Rhum - Passion", "prix": null, "image": null, "alt": "Punch passion servi au bar La Luciole", "alcool": true }
+      ]
+    },
+    {
+      "id": "planches",
+      "titre": "Planches à partager",
+      "produits": [
+        { "nom": "Planche gourmande", "composition": "Jambon - Saucisson", "prix": null, "image": "carte/planche-charcuterie-jambon-saucisson.webp", "alt": "Planche gourmande de charcuterie, jambon et saucisson, au bar La Luciole", "alcool": false }
+      ]
+    }
+  ]
+}

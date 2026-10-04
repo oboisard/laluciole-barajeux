@@ -1,0 +1,107 @@
+{
+  "avis/comptoir-du-bar-suspensions-et-plantes.webp": {
+    "src": "/images/avis/comptoir-du-bar-suspensions-et-plantes.webp",
+    "width": 1581,
+    "height": 3216,
+    "blurDataURL": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAADQBACdASoQACEAPt1apE2opSOiNUgBEBuJZgC7MtpCD5f3kJeVfcKwKVBqKLW2wAD+218TEeFvO40vLwvASrjVJDoCKbh97e0MxnHxh1sCWAGcW6Xf1JpPGMgrivfnNWtlFypgLz1DjYnfBQYwg7mwKywigiQ/TL8ttlNL5h4Ocjy8O3gSL5zuEO74/CmYVapWK9jo90KiefjoUIJzM9kTnDqb7/7cPcJ2dTdKA/1JJSjPkAz9IXEcirthkYY8VSWsnbjgkhmAT7iSILrLKomAAAA=",
+    "hash": "d0aa82e664a2"
+  },
+  "avis/salle-du-bar-joueurs-et-etageres-de-jeux.webp": {
+    "src": "/images/avis/salle-du-bar-joueurs-et-etageres-de-jeux.webp",
+    "width": 1200,
+    "height": 1807,
+    "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAADwAwCdASoQABgAPu1iqU2ppaOiMAgBMB2JZACdMoAByaF8aRudy72QAMonHRYHv8sGqyOR7JDnzLd9yFaKHHF8QNysbI+MjZPfMg76gnhe8Tjv3ijy/sjzHHNdCEsjRqzvA2oZc9Vc/vOFNKO9YhJkPp6LUodmpjaXkQF3xUm7uZL5tFBr/Ep0aytuAAAA",
+    "hash": "6473a812bf20"
+  },
+  "carte/dessert-chocolat-et-chantilly.webp": {
+    "src": "/images/carte/dessert-chocolat-et-chantilly.webp",
+    "width": 2058,
+    "height": 1175,
+    "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAkAA4BaJZwC7AYssnX8wAD+3cBu5Urzd8un2qOTeRhUes0o0tdIkI9cG8zr5gdZoHVlndMjlypW6fWDUOUHDs94NNOqJpst/Ai+YaAAAA==",
+    "hash": "6d55ebc4ab5b"
+  },
+  "carte/planche-charcuterie-jambon-saucisson.webp": {
+    "src": "/images/carte/planche-charcuterie-jambon-saucisson.webp",
+    "width": 2136,
+    "height": 3216,
+    "blurDataURL": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAACQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JZACdMoAvQTP4ukWtw0TYov9muwAA/qNVPDParzzUVg6yQ+kS0igst+REgnknKK4i1tX17WcyUjrBIxaBOd26/RLIfhLaKzozBZWKRusR3YXzOYLx/IKn3tLWrlzktMjCrM0/CKDXUBtwkJXfMrs9BbwDEwPDIAA=",
+    "hash": "4ac59334d16a"
+  },
+  "carte/tenders-panes-et-sauce.webp": {
+    "src": "/images/carte/tenders-panes-et-sauce.webp",
+    "width": 2136,
+    "height": 3216,
+    "blurDataURL": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAABQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JZAC7IIjB0Jlf+fWDlj0ATrAAAPa4KjAX1FjrsUgBF3Od3t6vJIZ0IpYuMUpuR0xoud8E0T41vRHUusLokzKUl0bYAQarD1hE5+T2AMAnp8KIWaAu21MnmfaxqOYpoGy4qACqOsQRV9w3yYqijvB5s6ZQnzA7ndcsZqSosU35xwrzxXrwh5QgRAA=",
+    "hash": "7623f60d9077"
+  },
+  "evenements/partie-de-cartes-vue-de-dessus.webp": {
+    "src": "/images/evenements/partie-de-cartes-vue-de-dessus.webp",
+    "width": 2136,
+    "height": 3216,
+    "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAACwAwCdASoQABgAPu1iqU2ppaOiMAgBMB2JQBOgBDwB4cOudPO5gAD+6RqsDQgtJPhASkmqTtgAWVLH4uH++JUbvq3wkPviXbKkpaD/e62wxDN9KccuirT96np5Ebz79bXucpZgSD/z5//F+fm4YjbCtfajZyCKS2wA/wAA",
+    "hash": "ee90fa0d7dac"
+  },
+  "evenements/soiree-loup-garou-joueurs-mains-levees.webp": {
+    "src": "/images/evenements/soiree-loup-garou-joueurs-mains-levees.webp",
+    "width": 1200,
+    "height": 1807,
+    "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAADQAwCdASoQABgAPu1iqU2ppaOiMAgBMB2JQBUegmXtfA2GScH4roAAws9D+0eWId9xL/ylOGp9tRnYzkLqHUi2hx5BgYlnCcYuKa73AFUIef+t8cEkih2e5QVqQG4ikuoTPmnpOSMffj4wyuieF98DEfOAs0SagtWSj7vSWCk2955Lplt1jcsWgAA=",
+    "hash": "fd548a2fe470"
+  },
+  "hero/etageres-jeux-de-societe-bar-a-jeux-merignac.webp": {
+    "src": "/images/hero/etageres-jeux-de-societe-bar-a-jeux-merignac.webp",
+    "width": 2400,
+    "height": 1594,
+    "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACQAQCdASoQAAsAA4BaJQBOgBALjHAA/tmmNJrRUDdsBEk/dsFZrMHbuDtNahRchSZnH5Woz8o1C1RrJ8jTCv9uCNB1UurYRJLQKrY2Ekco7cBEEAA=",
+    "hash": "fee688e5b041"
+  },
+  "hero/etageres-jeux-de-societe-bar-a-jeux-merignac-mobile.webp": {
+    "src": "/images/hero/etageres-jeux-de-societe-bar-a-jeux-merignac-mobile.webp",
+    "width": 1351,
+    "height": 2136,
+    "blurDataURL": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAAAQBACdASoQABkAPu1iqU2ppaOiMAgBMB2JagCdAywBSs6DzwLjNnb34AD+Mog96942jGfhdLuXKFYvmIPKryHossxxzKI2LhXkf4uTJTI0EHzl12PGdSsejXamBDr7G7x5a0r7FMpYm+8trSdOvrS804/oHuabwwTAfWxzMNAu4oJTqT3bhNsTKq+ktCp0YFECL5Wf96lrBG9OsFxCKJoUTWKbuigA",
+    "hash": "fee688e5b041"
+  },
+  "illustrations/illustration-abeille-et-fourmis-jeu-de-plateau.webp": {
+    "src": "/images/illustrations/illustration-abeille-et-fourmis-jeu-de-plateau.webp",
+    "width": 1456,
+    "height": 816,
+    "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAQCdASoQAAkAA4BaJbACdAED8vmM4AD31Xn/pRp/pjcdXb4/6h6KSV2q4yffF5lNtRR9nTa+oCeDMgWUA/IXUu0CrzqfU5f2AwoaHc24ULI6/yjs+5WyG/6SAAAA",
+    "hash": "a8d70bbf8764"
+  },
+  "lieu/boites-de-jeux-mad-et-crack-list.webp": {
+    "src": "/images/lieu/boites-de-jeux-mad-et-crack-list.webp",
+    "width": 2400,
+    "height": 1594,
+    "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACQAgCdASoQAAsAA4BaJbACdDiAAV3zk4R9VNXwAADLCHKIxTbLHyQrtzTNoWMjtilD8TEIJcFYGXC2I4gLXZ4ur0ikNyXK1oFCsq8QDjmxBPU6qzGVg/0RUmkkyR+BgYpsv/QAAAA=",
+    "hash": "a764579be9fa"
+  },
+  "lieu/bonbons-dans-des-bols-sur-le-comptoir.webp": {
+    "src": "/images/lieu/bonbons-dans-des-bols-sur-le-comptoir.webp",
+    "width": 2136,
+    "height": 3216,
+    "blurDataURL": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JaACdMoACc/1lns2QwH07goqAAP6/f36I5TQnn6YNu2gnl2TYIMw+czS0A8prYc24+eq0gBPFNz2HLsC+Qtg6UiAlYpdCpGp+I5vgZnkfMfVPhcQJg9KqZNjD4epejfYpoiFEV/mlZU3C44ZvyPmBBjj4UciXnGa5q1hDhDIAAA==",
+    "hash": "4703047f5ec8"
+  },
+  "lieu/joueurs-partie-de-cartes-et-cidre.webp": {
+    "src": "/images/lieu/joueurs-partie-de-cartes-et-cidre.webp",
+    "width": 2400,
+    "height": 1594,
+    "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAQCdASoQAAsAA4BaJZgCdAD6l+5PDwAA/uZH5V8HHHMFXhoZSnIMxrNJyKjDxdzJRoZgMnf7aLRe0XWoAvIXbKHWkawKujKAYyrNAAA=",
+    "hash": "d75cbb99f501"
+  },
+  "lieu/partie-jeu-de-plateau-et-biere.webp": {
+    "src": "/images/lieu/partie-jeu-de-plateau-et-biere.webp",
+    "width": 2136,
+    "height": 3216,
+    "blurDataURL": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAAAwBACdASoQABgAPu1iqU2ppaQiMAgBMB2JYgC7ABtrFQ4oTmJ7EbFneSAA/ZN6/pm2G0LqEIy9txZeKrRDTg6ZlGL2p3/ppqMvQVwcgVYMgdeF0O9eR7gv3u7xetc0sZ9G8+2xlkG8EXPGON4e/u2ZntG31a4tLQPSIqgaa9ZQR3r4He3pfLFZeICS+mAA",
+    "hash": "a2c2dd5a0357"
+  },
+  "logo/logo-la-luciole.webp": {
+    "src": "/images/logo/logo-la-luciole.webp",
+    "width": 749,
+    "height": 742,
+    "blurDataURL": "data:image/webp;base64,UklGRoQBAABXRUJQVlA4WAoAAAAQAAAADwAADwAAQUxQSMMAAAABgKJtm6rlmcHdvXuE6u5OculUNgCJzjqIf8Qryd2hup0z86J7iIgJ4E/LzKWWLP9aFuWcOoj6ZaKYVOACjRKFNTExZJ3Keb2UYzEUNTCrUNL7Vhu2uTO/L3tFTpLTcSoZBd3VI2/6HeowGUtlZFtekpemiIKIAi/J676J6Chid/ShPx7aTUqaZfhJgZMkr83sOCxVh/IuCEL3qV4LUWQu3EqS13MFgLVkdszNL7/cjZMNYKIAooozSedvEx0VZSmMygAAVlA4IJoAAAAwAgCdASoQABAAA4BaJbACdAYrJgdxQt4WgAD+8H40kF8/MT/nGpbwIfOwAM43XEq0rH9RJs9ZjNgPcU0fK7VywYEqlros1GbfFd7QGjvi0feroWMn0tLZKyvQrpkc0lPevf6X40xZFwvZh9F8AulJ+Q7buOJeNvF4yhY4EpJ/oGXmJZsp3AufAki21ZjzInFACbeAMAlOgAAA",
+    "hash": "4915c6e8d7f0"
+  }
+}

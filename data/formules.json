@@ -1,0 +1,23 @@
+{
+  "_info": "Offres entreprise / privatisation (section team building de l'accueil et page /privatisation). capacite : texte affiché dans la pastille, vide tant que non confirmé.",
+  "formules": [
+    {
+      "id": "afterwork",
+      "titre": "Afterwork jeux",
+      "description": "Jeux en libre accès, boissons et planches pour décompresser après le travail.",
+      "capacite": ""
+    },
+    {
+      "id": "soiree-animee",
+      "titre": "Soirée animée",
+      "description": "Un membre de l’équipe vous fait découvrir les jeux et anime la soirée.",
+      "capacite": ""
+    },
+    {
+      "id": "privatisation",
+      "titre": "Privatisation",
+      "description": "Le bar rien que pour vous, pour un séminaire ou une soirée CE.",
+      "capacite": ""
+    }
+  ]
+}

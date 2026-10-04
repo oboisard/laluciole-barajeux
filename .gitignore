@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.env*.local
+.vercel
+.DS_Store
+Thumbs.db
+
+# Originaux des photos (dont des clients reconnaissables) : jamais publiés.
+# Le site utilise les WebP déjà convertis de public/images/.
+_sources/
+
+# Fichiers de travail locaux, inutiles au site
+_archives/
+.claude/
+CLAUDE.md
+docs/
+scripts/generate-curseur.mjs
