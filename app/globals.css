@@ -1,53 +1,53 @@
 /* ==========================================================================
-   Tokens — reprennent les variables et text styles Figma (page DS)
+   Tokens — frame Figma « Redesign Finale » et « Tokens & états » (oct. 2026)
    ========================================================================== */
 
 :root {
-  /* Couleurs (variables Figma "Couleur/…") */
-  --noir: #121212;
-  --blanc: #fffdf5; /* fond de page */
-  --bleue: #009597;
-  --orange: #cc570b;
-  --jaune: #fdc600;
+  /* Couleurs. Fond de page crème, texte nuit ; surfaces sombres pour les blocs. */
+  --nuit-950: #0b1516; /* texte principal, fonds les plus sombres */
+  --nuit-900: #112122; /* surfaces, cartes sombres, footer */
+  --nuit-800: #183031; /* surfaces relevées (pastilles, monogrammes) */
+  --creme: #fffdf5; /* fond de page, texte sur fond sombre */
+  --texte-2: #b7c3c1; /* texte secondaire sur fond sombre */
+  --texte-3: #81918f; /* texte tertiaire sur fond sombre (5:1 sur nuit-900) */
+  /* Texte tertiaire sur fond crème : #81918f n'y fait que 3,2:1, d'où ce gris
+     plus foncé (4,9:1), demandé par Louis. */
+  --texte-3-clair: #647371;
+  --lueur: #ecc660; /* accent unique ; l'orange reste au logo et aux illustrations */
 
-  /* Fonds avec texte clair (footer, boutons bleus). Avec le bleu de la maquette
-     (#009597), même un blanc pur plafonne à 3,65:1 : impossible d'atteindre 4,5:1
-     en ne touchant qu'au blanc. Bleu assombri d'un cran : #008286, qui donne
-     ≈ 4,54:1 avec --blanc ET ≈ 4,54:1 avec un noir pur (--noir-sur-bleue) ; avec
-     --noir (#121212) on retomberait à 4,05:1. Le reste du site garde #009597. */
-  --fond-bleue: #008286;
-  --noir-sur-bleue: #000;
-  --fond-orange: var(--orange);
+  /* Lignes et bordures : crème à faible opacité sur fond sombre. */
+  --ligne-6: rgba(255, 253, 245, 0.06);
+  --ligne-8: rgba(255, 253, 245, 0.08);
+  --ligne-10: rgba(255, 253, 245, 0.1);
+  --ligne-16: rgba(255, 253, 245, 0.16);
 
-  /* Rayons */
-  --radius-btn: 32px;
-  --radius-card: 24px;
-  --radius-bloc: 32px;
-  --radius-panel: 12px;
+  /* Rayons : conteneurs 32 px avec un cadre de 6 px et un cœur à 26 px,
+     éléments internes 24 px, boutons et étiquettes en pilule. */
+  --rayon-bloc: 32px;
+  --rayon-coeur: 26px;
+  --rayon-interne: 24px;
 
-  /* Ombres */
-  --shadow-btn: 0 4px 2px rgba(0, 0, 0, 0.25);
-  --shadow-card: 0 4px 4px rgba(0, 0, 0, 0.25);
+  /* Ombres teintées nuit, jamais noir pur. */
+  --ombre-carte: 0 24px 64px rgba(3, 10, 10, 0.5);
+  --reflet: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
-  /* Polices (définies par next/font dans app/layout.tsx) */
-  --font-titre: var(--font-montserrat), system-ui, sans-serif;
+  /* Police unique (next/font, app/layout.tsx). */
   --font-texte: var(--font-outfit), system-ui, sans-serif;
-  --font-bouton: var(--font-noto), var(--font-outfit), system-ui, sans-serif;
 
-  /* Mise en page : la maquette fait 1920 px avec 72 px de marge latérale */
+  /* Mise en page : 160 px de marge latérale à 1920 px, contenu de 1600 px. */
   --max-width: 1920px;
-  --gutter: clamp(16px, 3.75vw, 72px);
-  /* Espace entre deux sections (« gap » Figma) : 128 px à 1920 px, 56 px sur mobile.
-     S'ajoute à la marge interne de chaque section (32 px comme les cadres Figma). */
-  --section-gap: clamp(56px, 1.75rem + 5.21vw, 128px);
-  --section-pad: clamp(16px, 1.67vw, 32px);
-  --header-top: clamp(12px, 2.9vw, 56px);
+  --gouttiere: clamp(20px, 8.33vw, 160px);
+  --section-haut: clamp(72px, 6.67vw, 128px);
+  --section-bas: clamp(80px, 7.5vw, 144px);
+  --header-top: clamp(12px, 2.8vw, 54px);
 
-  /* Focus visible : noir sur fond clair, jaune sur fond sombre */
-  --focus: var(--noir);
+  /* Focus clavier : anneau lueur de 2 px, décalé de 3 px. */
+  --focus: var(--lueur);
 
-  /* Animations */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Animations : 300 ms, transform et opacity (Figma « Règles d'intégration »). */
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --duree: 300ms;
+  /* Utilisé par le curseur luciole (components/curseur) : ne pas retirer. */
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -69,16 +69,16 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: 120px;
+  scroll-padding-top: 110px;
 }
 
 body {
   min-height: 100vh;
-  background: var(--blanc);
-  color: var(--noir);
+  background: var(--creme);
+  color: var(--nuit-950);
   font-family: var(--font-texte);
-  font-size: 1rem;
-  line-height: 1.25;
+  font-size: 1.0625rem;
+  line-height: 1.53;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
@@ -125,188 +125,63 @@ p {
 }
 
 :focus-visible {
-  outline: 3px solid var(--focus);
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
 }
 
 ::selection {
-  background: var(--jaune);
-  color: var(--noir);
+  background: var(--lueur);
+  color: var(--nuit-950);
 }
 
 /* ==========================================================================
-   Typographie — styles Figma, réduits sur mobile avec clamp()
-   Les noms suivent la maquette, PAS les niveaux HTML (voir CLAUDE.md §4).
+   Typographie — Outfit uniquement
    ========================================================================== */
 
-/* Titre du héro (accueil et pages internes) : Montserrat Bold 32/42. */
-.t-hero-titre {
-  font-family: var(--font-titre);
-  font-weight: 700;
-  font-size: clamp(1.75rem, 1.6rem + 0.5vw, 2rem); /* 32/42, 28 px sur mobile */
-  line-height: 1.3125;
-}
-
-.t-montserrat-h1 {
-  font-family: var(--font-titre);
-  font-weight: 700;
-  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 4rem); /* 64/70 */
-  line-height: 1.09;
-}
-
-.t-montserrat-h2 {
-  font-family: var(--font-titre);
-  font-weight: 700;
-  font-size: clamp(2rem, 1.55rem + 1.5vw, 3rem); /* 48/52 */
-  line-height: 1.083;
-}
-
-.t-montserrat-h3 {
-  font-family: var(--font-titre);
-  font-weight: 700;
-  font-size: clamp(1.75rem, 1.45rem + 1.05vw, 2.5rem); /* 40/44 */
-  line-height: 1.1;
-}
-
-.t-outfit-h4 {
-  font-family: var(--font-texte);
+/* Titre du héro (H1) : SemiBold 64, -2,5 %. */
+.t-hero {
   font-weight: 600;
-  font-size: clamp(1.75rem, 1.6rem + 0.5vw, 2.25rem); /* 36/40 */
-  line-height: 1.11;
+  font-size: clamp(2rem, 1.4rem + 2.9vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
-.t-outfit-h5 {
-  font-family: var(--font-texte);
+/* Titres de section (H2) : SemiBold 64/68, -2,5 %. */
+.t-titre {
   font-weight: 600;
-  font-size: clamp(1.5rem, 1.35rem + 0.55vw, 2rem); /* 32/36 */
-  line-height: 1.125;
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 4rem);
+  line-height: 1.0625;
+  letter-spacing: -0.025em;
 }
 
-.t-outfit-h6 {
-  font-family: var(--font-texte);
-  font-weight: 600;
-  font-size: clamp(1.25rem, 1.15rem + 0.35vw, 1.5rem); /* 24/28 */
-  line-height: 1.167;
-}
-
-/* Style Figma « Outfit - 24 - B - XXL », passé à 20/26 (intitulés). Les liens du
-   menu ont leur propre style (Header.module.css, SemiBold 18/24). */
-.t-outfit-24b {
-  font-family: var(--font-texte);
-  font-weight: 700;
-  font-size: 1.25rem; /* 20/26 */
-  line-height: 1.3;
-}
-
-/* Style Figma « Outfit - 20 - R - XL », passé à 18/24 : texte courant. */
-.t-outfit-20 {
-  font-family: var(--font-texte);
-  font-weight: 400;
-  font-size: 1.125rem; /* 18/24 */
-  line-height: 1.3333;
-}
-
-.t-outfit-16 {
-  font-family: var(--font-texte);
-  font-weight: 400;
-  font-size: 1rem; /* 16/20 */
-  line-height: 1.25;
-}
-
-.t-outfit-14 {
-  font-family: var(--font-texte);
-  font-weight: 300;
-  font-size: 0.875rem; /* 14/16 */
-  line-height: 1.143;
-}
-
-.t-outfit-12 {
-  font-family: var(--font-texte);
-  font-weight: 300;
-  font-size: 0.75rem; /* 12/14 */
-  line-height: 1.167;
-}
-
-.t-body-m-18 {
-  font-family: var(--font-bouton);
+/* Titre de carte : Medium 24/30, -1 %. */
+.t-titre-carte {
   font-weight: 500;
-  font-size: 1.125rem; /* 18/20 */
-  line-height: 1.111;
+  font-size: clamp(1.25rem, 1.15rem + 0.3vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
-/* Texte bleu sur fond crème (3,6:1) : conforme AA uniquement en « grand texte ».
-   24 px sur grand écran, 19 px gras sur mobile (≥ 18,66 px gras). */
-.t-sous-titre-bleu {
-  font-family: var(--font-texte);
-  font-weight: 600;
-  font-size: 1.5rem;
-  line-height: 1.167;
-  color: var(--bleue);
+/* Corps L : Regular 20/32. */
+.t-corps-l {
+  font-weight: 400;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.6;
 }
 
-/* Échelle mobile : tailles réduites et interlignes plus aérés pour la lecture
-   sur petit écran (texte courant 16/24, titres de section 26/32). */
-@media (max-width: 767px) {
-  .t-hero-titre {
-    font-size: 1.625rem; /* 26/34 */
-    line-height: 1.3077;
-  }
+/* Corps : Regular 17/26. */
+.t-corps {
+  font-weight: 400;
+  font-size: clamp(1rem, 0.97rem + 0.1vw, 1.0625rem);
+  line-height: 1.53;
+}
 
-  .t-montserrat-h1 {
-    font-size: 2.125rem; /* 34/40 */
-    line-height: 1.176;
-  }
-
-  .t-montserrat-h2 {
-    font-size: 1.875rem; /* 30/36 */
-    line-height: 1.2;
-  }
-
-  .t-montserrat-h3 {
-    font-size: 1.625rem; /* 26/32 */
-    line-height: 1.2308;
-  }
-
-  .t-outfit-h4 {
-    font-size: 1.5rem; /* 24/30 */
-    line-height: 1.25;
-  }
-
-  .t-outfit-h5 {
-    font-size: 1.375rem; /* 22/28 */
-    line-height: 1.2727;
-  }
-
-  .t-outfit-h6 {
-    font-size: 1.125rem; /* 18/24 */
-    line-height: 1.3333;
-  }
-
-  .t-outfit-24b {
-    font-size: 1.125rem; /* 18/24 */
-    line-height: 1.3333;
-  }
-
-  .t-outfit-20 {
-    font-size: 1rem; /* 16/24 */
-    line-height: 1.5;
-  }
-
-  .t-outfit-16 {
-    font-size: 0.9375rem; /* 15/22 */
-    line-height: 1.4667;
-  }
-
-  .t-body-m-18 {
-    font-size: 1rem; /* 16/20 */
-    line-height: 1.25;
-  }
-
-  .t-sous-titre-bleu {
-    font-size: 1.1875rem; /* 19 px gras */
-    font-weight: 700;
-    line-height: 1.3;
-  }
+/* Label : Medium 15. */
+.t-label {
+  font-weight: 500;
+  font-size: 0.9375rem;
+  line-height: 1.3;
 }
 
 /* ==========================================================================
@@ -317,23 +192,15 @@ p {
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
-main {
-  padding-bottom: var(--section-gap);
-}
-
-main > .section {
-  margin-top: var(--section-gap);
+  padding-inline: var(--gouttiere);
 }
 
 .section {
-  padding-block: var(--section-pad);
+  padding-block: var(--section-haut) var(--section-bas);
   /* Les sections hors écran ne sont mises en page et peintes qu'à l'approche :
      premier affichage (LCP) beaucoup plus rapide sur mobile. */
   content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
+  contain-intrinsic-size: auto 1000px;
 }
 
 /* Dès le premier clic sur un lien vers une section (menu, boutons « #… ») : toutes les
@@ -341,6 +208,22 @@ main > .section {
    section visée (components/DefilementAncres.tsx). */
 html[data-sections-rendues] .section {
   content-visibility: visible;
+}
+
+/* Cadre « bezel » : bloc arrondi de 32 px, liseré et fond crème très légers,
+   6 px autour d'un cœur arrondi à 26 px. */
+.bezel {
+  padding: 5px;
+  border: 1px solid var(--ligne-8);
+  border-radius: var(--rayon-bloc);
+  background: rgba(255, 253, 245, 0.04);
+}
+
+.bezel-coeur {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--rayon-coeur);
+  box-shadow: var(--reflet);
 }
 
 .visually-hidden {
@@ -360,16 +243,14 @@ html[data-sections-rendues] .section {
   top: 12px;
   left: 12px;
   z-index: 100;
-  padding: 12px 18px;
-  border-radius: var(--radius-btn);
-  background: var(--noir);
-  color: var(--blanc);
-  font-family: var(--font-bouton);
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--nuit-950);
+  color: var(--creme);
   font-weight: 500;
   text-decoration: none;
   transform: translateY(-200%);
-  transition: transform 0.2s var(--ease-out);
-  --focus: var(--jaune);
+  transition: transform var(--duree) var(--ease);
 }
 
 .skip-link:focus {
@@ -393,60 +274,56 @@ html[data-curseur-luciole] iframe {
   display: inline;
   padding: 0.05em 0.35em;
   border-radius: 4px;
-  background: var(--jaune);
-  color: var(--noir);
-  font-family: var(--font-texte);
+  background: var(--lueur);
+  color: var(--nuit-950);
   font-weight: 600;
   font-size: max(0.8em, 0.875rem);
   line-height: 1.4;
+  letter-spacing: 0;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
 
 /* ==========================================================================
-   Animations au défilement — amélioration progressive, sans JavaScript :
-   les navigateurs sans scroll-driven animations affichent le contenu tel quel.
+   Mouvement (MOTION_INTENSITY 5) — transform, opacity et flou d'entrée seulement
    ========================================================================== */
 
-@keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes reveal-scale {
-  from {
-    opacity: 0;
-    transform: translateY(32px) scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
+/* Entrée au défilement : fondu + 16 px + flou 8 px vers 0, 80 ms entre éléments
+   (components/Apparition.tsx). Seuls les éléments encore sous la ligne de flottaison
+   au chargement sont masqués puis révélés : sans JavaScript, tout reste visible. */
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: reveal-up linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 70%;
-    }
+  [data-apparition='attente'] {
+    opacity: 0;
+    transform: translateY(16px);
+  }
 
-    /* Uniquement sur grand écran : sur mobile, les cartes sont dans un
-       défilement horizontal où la timeline verticale ne s'applique pas. */
-    @media (min-width: 1200px) {
-      .reveal-card {
-        animation: reveal-scale linear both;
-        animation-timeline: view();
-        animation-range: entry 5% entry 80%;
-      }
+  [data-apparition='visible'] {
+    transition:
+      opacity 700ms var(--ease),
+      transform 700ms var(--ease),
+      filter 700ms var(--ease);
+    transition-delay: calc(var(--rang, 0) * 80ms);
+  }
+
+  /* Le flou, coûteux à peindre, seulement sur grand écran. */
+  @media (min-width: 1200px) {
+    [data-apparition='attente'] {
+      filter: blur(8px);
     }
+  }
+}
+
+/* Entrée du héro au chargement, en cascade (CSS seul). */
+@keyframes entree {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 }
 

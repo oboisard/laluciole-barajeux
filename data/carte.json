@@ -1,21 +1,21 @@
 {
-  "_info": "Carte du bar. prix : nombre en euros (null tant qu'il n'est pas renseigné). image : clé dans data/images.json, ou null pour afficher le placeholder. alcool : true si la boisson contient de l'alcool (affiche la mention loi Évin sur la page).",
+  "_info": "Carte du bar. aLaUne : position du produit dans la bande « Une petite soif, un petit creux ? » de l'accueil (1, 2, 3…, toutes catégories confondues), ou null pour ne pas l'y afficher. Sur mobile (grille de deux colonnes), avec un nombre impair de produits à la une, celui du milieu prend toute la largeur. image : clé dans data/images.json, ou null pour afficher le placeholder. prix : nombre en euros (null tant qu'il n'est pas renseigné) et alcool : true si la boisson contient de l'alcool ; ces deux champs ne sont pas affichés sur l'accueil (prévus pour la page carte de la V2 ; la mention loi Évin est dans le footer).",
   "categories": [
     {
       "id": "cocktails",
       "titre": "Cocktails",
       "produits": [
-        { "nom": "Americano", "composition": "Martini - Campari", "prix": null, "image": null, "alt": "Cocktail Americano servi au bar La Luciole", "alcool": true },
-        { "nom": "Apple fizz", "composition": "Jus - Pomme et Citron", "prix": null, "image": null, "alt": "Cocktail Apple fizz servi au bar La Luciole", "alcool": false },
-        { "nom": "Gin fizz", "composition": "Gin - Citron", "prix": null, "image": null, "alt": "Cocktail Gin fizz servi au bar La Luciole", "alcool": true },
-        { "nom": "Punch passion", "composition": "Rhum - Passion", "prix": null, "image": null, "alt": "Punch passion servi au bar La Luciole", "alcool": true }
+        { "nom": "Americano", "composition": "Martini, Campari", "prix": null, "image": null, "alt": "Cocktail Americano servi au bar La Luciole", "alcool": true, "aLaUne": 1 },
+        { "nom": "Apple fizz", "composition": "Jus de pomme, citron", "prix": null, "image": null, "alt": "Cocktail Apple fizz servi au bar La Luciole", "alcool": false, "aLaUne": 2 },
+        { "nom": "Gin fizz", "composition": "Gin, citron", "prix": null, "image": null, "alt": "Cocktail Gin fizz servi au bar La Luciole", "alcool": true, "aLaUne": 4 },
+        { "nom": "Punch passion", "composition": "Rhum, passion", "prix": null, "image": null, "alt": "Punch passion servi au bar La Luciole", "alcool": true, "aLaUne": 5 }
       ]
     },
     {
       "id": "planches",
       "titre": "Planches à partager",
       "produits": [
-        { "nom": "Planche gourmande", "composition": "Jambon - Saucisson", "prix": null, "image": "carte/planche-charcuterie-jambon-saucisson.webp", "alt": "Planche gourmande de charcuterie, jambon et saucisson, au bar La Luciole", "alcool": false }
+        { "nom": "Planche gourmande", "composition": "Jambon, saucisson", "prix": null, "image": "carte/planche-charcuterie-jambon-saucisson.webp", "alt": "Planche gourmande de charcuterie, jambon et saucisson, au bar La Luciole", "alcool": false, "aLaUne": 3 }
       ]
     }
   ]

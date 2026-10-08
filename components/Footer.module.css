@@ -1,13 +1,12 @@
+/* Footer nuit-900 : 112 px en haut, 48 px en bas, 96 px entre les trois bandes. */
 .footer {
-  --focus: var(--jaune);
-
-  position: relative;
-  overflow: hidden;
-  background: var(--fond-bleue);
-  color: var(--blanc);
-  padding-top: clamp(48px, 5vw, 64px);
-  content-visibility: auto;
-  contain-intrinsic-size: auto 700px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 5vw, 96px);
+  padding-block: clamp(64px, 5.8vw, 112px) 48px;
+  border-top: 1px solid var(--ligne-6);
+  background: var(--nuit-900);
+  color: var(--creme);
 }
 
 .haut {
@@ -17,33 +16,42 @@
   gap: 48px;
 }
 
+.accroche {
+  max-width: 340px;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+
 .colonnes {
   display: flex;
   flex-wrap: wrap;
   gap: 48px clamp(48px, 5vw, 96px);
 }
 
-/* Intitulés « Outfit 24 B » (20/26) gardés en 20 px gras sur mobile : texte clair sur le
-   bleu du footer, conforme AA seulement en « grand texte ». */
-.titreColonne {
-  font-family: var(--font-texte);
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.3;
-}
-
-.colonnes > *,
-.infos {
+.colonne {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 10px;
+  gap: 14px;
+  font-style: normal;
 }
 
-.liste {
+.colonne ul {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+}
+
+.intitule {
+  color: var(--texte-3);
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.colonne li {
+  font-weight: 500;
+  font-size: 1.0625rem;
 }
 
 .lien {
@@ -53,119 +61,53 @@
 
 .lien:hover {
   text-decoration: underline;
-  text-decoration-thickness: 2px;
-}
-
-.horaires {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 228px;
-}
-
-.horaires div {
-  display: flex;
-  gap: 0.3em;
-}
-
-.horaires dt::after {
-  content: ' /';
-}
-
-.horaires dd {
-  margin: 0;
-}
-
-/* Noir pur (et non --noir) : seul noir assez contrasté sur --fond-bleue. */
-.ferme {
-  color: var(--noir-sur-bleue);
-  font-weight: 700;
-}
-
-.reseaux {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
 
 .reseau {
-  display: inline-block;
-  border-radius: 50%;
-  transition: transform 0.35s var(--ease-spring);
-}
-
-.reseau:hover {
-  transform: scale(1.12) rotate(-8deg);
-}
-
-/* Infos pratiques en noir (Figma) */
-.infos {
-  font-style: normal;
-  color: var(--noir-sur-bleue);
-  --focus: var(--noir-sur-bleue);
-}
-
-.info {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.info svg {
-  flex-shrink: 0;
-}
-
+/* Signature : logo 200 px + nom du bar en très grand (247 px à 1920 px). */
 .signature {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 3.3vw, 64px);
-  padding-block: 32px;
+  gap: clamp(12px, 2.1vw, 40px);
 }
 
 .logo {
-  width: clamp(72px, 12vw, 231px);
-  height: auto;
   flex-shrink: 0;
-  animation: luciole-vole 6s ease-in-out infinite;
-  transform-origin: 70% 70%;
-}
-
-/* La luciole flotte doucement */
-@keyframes luciole-vole {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate(4px, -10px) rotate(-4deg);
-  }
+  width: clamp(48px, 10.4vw, 200px);
+  height: auto;
 }
 
 .geant {
-  font-family: var(--font-texte);
-  font-weight: 700;
-  font-size: clamp(3rem, 11.6vw, 14.375rem);
-  line-height: 0.8;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  font-size: clamp(2.75rem, 12.8vw, 15.44rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
   white-space: nowrap;
-  color: var(--blanc);
 }
 
 .legal {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 8px 24px;
-  padding-block: 16px 24px;
-  border-top: 1px solid rgba(255, 253, 245, 0.3);
-}
-
-.legal a {
-  color: inherit;
+  gap: 12px 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--ligne-6);
+  color: var(--texte-3);
+  font-size: 0.875rem;
 }
 
 @media (max-width: 767px) {
   .colonnes {
+    flex-direction: column;
     gap: 32px;
+  }
+
+  .legal {
+    flex-direction: column;
   }
 }

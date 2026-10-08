@@ -16,11 +16,11 @@ export default function PageIntrouvable() {
         <p className={styles.code} aria-hidden="true">
           404
         </p>
-        <h1 id="titre-404" className="t-montserrat-h3">
+        <h1 id="titre-404" className="t-titre">
           Cette page s’est envolée…
         </h1>
-        <p className="t-outfit-20">Elle n’existe pas ou plus. Revenez au bar, les jeux vous attendent.</p>
-        <Button href="/" variant="blanc" icon="arrowBack">
+        <p className={`t-corps-l ${styles.texte}`}>Elle n’existe pas ou plus. Revenez au bar, les jeux vous attendent.</p>
+        <Button href="/" icon="arrowBack">
           Retour à l’accueil
         </Button>
       </div>

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import { Montserrat, Outfit, Source_Sans_3 } from 'next/font/google';
+import { Outfit } from 'next/font/google';
+import Apparition from '@/components/Apparition';
 import CurseurLuciole from '@/components/curseur/CurseurLuciole';
 import DefilementAncres from '@/components/DefilementAncres';
 import Footer from '@/components/Footer';
@@ -10,13 +11,9 @@ import { image } from '@/lib/images';
 import { SITE, siteUrl } from '@/lib/site';
 import './globals.css';
 
-// Polices auto-hébergées au build : uniquement les graisses utilisées.
-const montserrat = Montserrat({ subsets: ['latin'], weight: '700', variable: '--font-montserrat', display: 'swap' });
-// Police variable : un seul fichier pour les graisses 300, 400, 600 et 700.
+// Police unique (Redesign Finale) : Outfit, auto-hébergée au build. Police variable :
+// un seul fichier pour toutes les graisses utilisées (400, 500, 600).
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit', display: 'swap' });
-// Police des boutons (Figma : Noto Sans JP Medium). Les caractères latins de Noto Sans JP
-// sont ceux de Source Sans : même rendu, mais un seul fichier au lieu de ~120 @font-face japonais.
-const noto = Source_Sans_3({ subsets: ['latin'], weight: '500', variable: '--font-noto', display: 'swap', preload: false });
 
 const imageOg = image(IMAGE_PRINCIPALE);
 
@@ -39,12 +36,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#009597',
+  themeColor: '#0b1516',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={`${montserrat.variable} ${outfit.variable} ${noto.variable}`}>
+    <html lang="fr" className={outfit.variable}>
       <body>
         <a href="#contenu" className="skip-link">
           Aller au contenu
@@ -55,6 +52,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </main>
         <Footer />
         <CurseurLuciole />
+        <Apparition />
         <DefilementAncres />
         <JsonLd data={barJsonLd()} />
       </body>

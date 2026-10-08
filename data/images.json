@@ -53,14 +53,21 @@
     "width": 2400,
     "height": 1594,
     "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAACQAQCdASoQAAsAA4BaJQBOgBALjHAA/tmmNJrRUDdsBEk/dsFZrMHbuDtNahRchSZnH5Woz8o1C1RrJ8jTCv9uCNB1UurYRJLQKrY2Ekco7cBEEAA=",
-    "hash": "fee688e5b041"
+    "hash": "3018a2d5a00b"
   },
-  "hero/etageres-jeux-de-societe-bar-a-jeux-merignac-mobile.webp": {
-    "src": "/images/hero/etageres-jeux-de-societe-bar-a-jeux-merignac-mobile.webp",
-    "width": 1351,
-    "height": 2136,
-    "blurDataURL": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAAAQBACdASoQABkAPu1iqU2ppaOiMAgBMB2JagCdAywBSs6DzwLjNnb34AD+Mog96942jGfhdLuXKFYvmIPKryHossxxzKI2LhXkf4uTJTI0EHzl12PGdSsejXamBDr7G7x5a0r7FMpYm+8trSdOvrS804/oHuabwwTAfWxzMNAu4oJTqT3bhNsTKq+ktCp0YFECL5Wf96lrBG9OsFxCKJoUTWKbuigA",
-    "hash": "fee688e5b041"
+  "hero/illustration-arbre-et-table-de-jeu-au-crepuscule.webp": {
+    "src": "/images/hero/illustration-arbre-et-table-de-jeu-au-crepuscule.webp",
+    "width": 2400,
+    "height": 1345,
+    "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAkAA4BaJbACdAEUoZQMywAA/uiiIquOJ46U+gs/rJOPeMNeyGcHIyFxSt5h+NBtECe1fNTcX9tlQn/X0KpC/vxmgbqsZUbAAA==",
+    "hash": "203b7bb2931a"
+  },
+  "hero/illustration-arbre-et-table-de-jeu-au-crepuscule-mobile.webp": {
+    "src": "/images/hero/illustration-arbre-et-table-de-jeu-au-crepuscule-mobile.webp",
+    "width": 2400,
+    "height": 3203,
+    "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JbACdMoC4AAZvonKNxWoxAAD+7FehGzRkfE/X8v/foUyDnMquOWUBxYvSDJRockUgPSaCkv7Dlmsh4QfgrxHXtvmcaOJbtUNYNDQhN8+zBUMmezDw7IgYAAA=",
+    "hash": "203b7bb2931a"
   },
   "illustrations/illustration-abeille-et-fourmis-jeu-de-plateau.webp": {
     "src": "/images/illustrations/illustration-abeille-et-fourmis-jeu-de-plateau.webp",
@@ -68,6 +75,13 @@
     "height": 816,
     "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADQAQCdASoQAAkAA4BaJbACdAED8vmM4AD31Xn/pRp/pjcdXb4/6h6KSV2q4yffF5lNtRR9nTa+oCeDMgWUA/IXUu0CrzqfU5f2AwoaHc24ULI6/yjs+5WyG/6SAAAA",
     "hash": "a8d70bbf8764"
+  },
+  "illustrations/illustration-arbre-bibliotheque-de-jeux.webp": {
+    "src": "/images/illustrations/illustration-arbre-bibliotheque-de-jeux.webp",
+    "width": 2400,
+    "height": 3000,
+    "blurDataURL": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABwBACdASoQABQAPu1iqU2ppaOiMAgBMB2JbACdMoADECS2xpTemU1OVJUoAAD8OHM4QG+Pf8+Lb+L6xB1PRNjTZ2Pt6BgU3eBCiCBnDNBfgRgjH1r4mKqJRzVDgGkrgRZOXZWnzwSETG24MvbasD4d+tbn3/EuJ4j68zitc4JnfpTQmJNIVBJ+MYW60GHGBlK5Tc1dofIQAA==",
+    "hash": "f0239c1943cd"
   },
   "lieu/boites-de-jeux-mad-et-crack-list.webp": {
     "src": "/images/lieu/boites-de-jeux-mad-et-crack-list.webp",

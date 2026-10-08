@@ -1,40 +1,171 @@
-/* Bloc de contenu de 856 px avec 64 px de marge interne, aligné à gauche (Figma 23:272). */
-.contenu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 32px;
-  max-width: 856px;
-  padding: 32px clamp(0px, 3.3vw, 64px);
+/* Pas de marge haute : la section précédente l'apporte (Figma : 144 px en bas seulement). */
+.section {
+  padding-bottom: var(--section-bas);
 }
 
-/* Moyens de réserver : lignes espacées de 24 px. */
-.moyens {
+/* Bandeau de 1600 × 700, cœur nuit-900 de 688 px (à 1920 px). */
+.cadre {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
 }
 
-/* Intitulé puis bouton, à 24 px l'un de l'autre ; le bouton passe à la ligne sur
-   les très petits écrans. */
-.ligne {
+.coeur {
+  flex: 1;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 8px 24px;
+  min-height: clamp(520px, 36.5vw, 688px);
+  background: var(--nuit-900);
+  color: var(--creme);
 }
 
-/* Souligné : un lien de la même couleur que le texte doit rester repérable. La
-   marge interne agrandit la zone cliquable (44 px) sans décaler les lignes. */
-.telephone {
-  padding-block: 12px;
-  text-underline-offset: 3px;
+/* Illustration à droite (933 px), fondue vers la gauche dans le fond nuit. */
+.illustration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 58.75%;
 }
 
+.image {
+  object-fit: cover;
+}
+
+/* Déborde de 2 px à gauche : aucun liseré entre l'illustration et le fond. */
+.fondu {
+  position: absolute;
+  inset: 0 0 0 -2px;
+  background: linear-gradient(to right, #112122, rgba(17, 33, 34, 0.35) 61%, rgba(17, 33, 34, 0));
+}
+
+.contenu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 44px;
+  padding: 48px clamp(28px, 3.75vw, 72px);
+}
+
+.texte {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.corps {
+  max-width: 540px;
+  color: var(--texte-2);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* Tuile de canal : 332 × 88, pastille de 56 px, flèche lueur. */
+.tuile {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(332px, 100%);
+  min-height: 88px;
+  padding: 16px 24px 16px 16px;
+  border: 1px solid var(--ligne-10);
+  border-radius: var(--rayon-interne);
+  background: rgba(255, 253, 245, 0.05);
+  box-shadow: var(--reflet);
+  color: var(--creme);
+  text-decoration: none;
+  transition: transform var(--duree) var(--ease);
+}
+
+/* Fond plus clair au survol (calque en opacité). */
+.tuile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: rgba(255, 253, 245, 0.06);
+  opacity: 0;
+  transition: opacity var(--duree) var(--ease);
+}
+
+.pastille {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--nuit-800);
+  color: var(--lueur);
+}
+
+.libelle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nom {
+  font-weight: 500;
+  font-size: 1.1875rem;
+  letter-spacing: -0.005em;
+}
+
+.precision {
+  color: var(--texte-3);
+  font-size: 0.9375rem;
+}
+
+.fleche {
+  color: var(--lueur);
+  transition: transform var(--duree) var(--ease);
+}
+
+@media (hover: hover) {
+  a.tuile:hover::before {
+    opacity: 1;
+  }
+
+  a.tuile:hover .fleche {
+    transform: translateX(2px);
+  }
+}
+
+a.tuile:active {
+  transform: scale(0.98);
+}
+
+/* Mobile : texte au-dessus, illustration en dessous, fondue vers le haut. */
 @media (max-width: 767px) {
+  .coeur {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+  }
+
+  .illustration {
+    position: relative;
+    order: 2;
+    width: 100%;
+    height: 340px;
+  }
+
+  .fondu {
+    background: linear-gradient(to bottom, #112122, rgba(17, 33, 34, 0.35) 45%, rgba(17, 33, 34, 0));
+  }
+
   .contenu {
-    gap: 24px;
-    padding-block: 0;
+    gap: 28px;
+    padding: 36px 24px 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.tuile:hover .fleche,
+  a.tuile:active {
+    transform: none;
   }
 }

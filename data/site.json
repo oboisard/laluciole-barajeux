@@ -38,6 +38,7 @@
     "tram": "A : arrêt Mérignac Centre",
     "parking": ""
   },
+  "noteGoogle": { "moyenne": "4,9", "nombre": 106 },
   "liens": {
     "reservation": "https://reservation.laddition.com/booking/laluciole-barajeux#/date",
     "avisGoogle": "",

@@ -1,110 +1,240 @@
-/* La section occupe toute la largeur de la page (la vague aussi) ; le contenu est
-   dans un .container. `section.section` : plus spécifique que la règle globale
-   `.section`, quel que soit l'ordre de chargement des CSS. Pas de content-visibility
-   ici : son confinement de peinture couperait la vague qui déborde de la section. */
-section.section {
-  position: relative;
-  isolation: isolate;
-  content-visibility: visible;
-}
-
-.contenu {
+.section {
   display: flex;
   flex-direction: column;
-  gap: clamp(32px, 3.3vw, 64px);
-}
-
-/* Vague jaune (Figma 74:482, 1920 × 983) : déborde de 71 px au-dessus de la
-   section et de 100 px en dessous à 1920 px. Largeur = celle de la page (pas
-   100vw, qui inclut la barre de défilement et créerait un défilement horizontal). */
-.vague {
-  position: absolute;
-  z-index: -1;
-  top: -3.7vw;
-  bottom: -5.21vw;
-  left: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  color: var(--jaune);
-  pointer-events: none;
-}
-
-.vagueHaut,
-.vagueBas {
-  display: block;
-  flex-shrink: 0;
-  width: 100%;
-  fill: currentColor;
-}
-
-.vagueHaut {
-  height: calc(100vw * 56 / 1920);
-}
-
-.vagueBas {
-  height: calc(100vw * 64 / 1920);
-}
-
-/* Recouvrement d'1 px pour éviter tout liseré entre les morceaux. */
-.vagueCorps {
-  flex: 1;
-  margin-block: -1px;
-  background: currentColor;
+  gap: clamp(40px, 3.75vw, 72px);
 }
 
 .entete {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px 48px;
-}
-
-.texte {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.texte p {
-  max-width: 479px;
+.entete h2 {
+  max-width: 720px;
 }
 
-.ce {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 24px;
+.entete p {
+  max-width: 600px;
 }
 
-/* Grande carte à gauche, puis 3 cartes de 346 px (à 1920 px). */
-.cartes {
+/* Grande carte 968 px + agenda 600 px, 32 px d'écart, 640 px de haut (à 1920 px). */
+.evenements {
   display: grid;
-  grid-template-columns: minmax(0, 1.85fr) repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 968fr) minmax(0, 600fr);
   gap: 32px;
+  min-height: clamp(560px, 33.3vw, 640px);
 }
 
-/* Tablette : 2 colonnes, la grande carte sur toute la largeur. */
+.vedette,
+.agendaCadre {
+  display: flex;
+}
+
+.vedetteCoeur {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+}
+
+.vedetteImage {
+  z-index: -2;
+  object-fit: cover;
+  transition: transform 700ms var(--ease);
+}
+
+.voile {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 21, 22, 0) 25%,
+    rgba(11, 21, 22, 0.6) 62%,
+    rgba(11, 21, 22, 0.95)
+  );
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .vedette:hover .vedetteImage {
+    transform: scale(1.03);
+  }
+}
+
+.vedetteContenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: clamp(24px, 2.3vw, 44px);
+  color: var(--creme);
+}
+
+.quand {
+  color: var(--lueur);
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.vedetteTitre {
+  font-weight: 600;
+  font-size: clamp(2.25rem, 1.5rem + 2.2vw, 3.5rem);
+  line-height: 1.07;
+  letter-spacing: -0.02em;
+}
+
+.vedetteTexte {
+  max-width: 470px;
+  color: var(--texte-2);
+  font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+  line-height: 1.58;
+}
+
+.vedetteBouton {
+  margin-top: 4px;
+}
+
+/* Agenda : surface nuit-900, trois lignes séparées par un liseré. */
+.agenda {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--nuit-900);
+  color: var(--creme);
+}
+
+.ligne {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 28px 28px 32px;
+}
+
+.ligne + .ligne {
+  border-top: 1px solid var(--ligne-8);
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+  width: 72px;
+  font-weight: 500;
+}
+
+.numero {
+  font-size: 3rem;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+.mois {
+  color: var(--texte-3);
+  font-size: 0.9375rem;
+}
+
+.infos {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.meta {
+  color: var(--texte-2);
+  font-size: 1.0625rem;
+  line-height: 1.41;
+}
+
+.lien {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 8px 4px;
+  color: var(--lueur);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+
+.lien svg {
+  transition: transform var(--duree) var(--ease);
+}
+
+@media (hover: hover) {
+  .lien:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .lien:hover svg {
+    transform: translateX(2px);
+  }
+}
+
+.vignette {
+  position: relative;
+  flex-shrink: 0;
+  width: 112px;
+  height: 112px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.vignetteImage {
+  object-fit: cover;
+  transition: transform 700ms var(--ease);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .ligne:hover .vignetteImage {
+    transform: scale(1.05);
+  }
+}
+
 @media (max-width: 1199px) {
-  .cartes {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+  .evenements {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
   }
 
-  .grande {
-    grid-column: 1 / -1;
+  .vedetteCoeur {
+    min-height: clamp(460px, 60vw, 600px);
   }
 }
 
-/* Mobile : grille qui s'adapte à la largeur (1 colonne sur téléphone, 2 en paysage). */
 @media (max-width: 767px) {
-  .cartes {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-    gap: 16px;
+  .vedetteCoeur {
+    min-height: 480px;
   }
 
-  .grande {
-    grid-column: auto;
+  .ligne {
+    gap: 16px;
+    padding: 20px 16px;
+  }
+
+  .date {
+    width: 52px;
+  }
+
+  .numero {
+    font-size: 2.25rem;
+  }
+
+  .vignette {
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lien:hover svg {
+    transform: none;
   }
 }

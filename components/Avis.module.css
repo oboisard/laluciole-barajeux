@@ -1,83 +1,49 @@
-.carte {
+.avis {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  height: 100%;
-  padding: 24px;
-  border-radius: var(--radius-card);
-  background: var(--blanc);
-  box-shadow: var(--shadow-card);
-  color: var(--noir);
-  transition:
-    transform 0.35s var(--ease-spring),
-    box-shadow 0.35s var(--ease-out);
+  gap: 20px;
+  padding-top: 32px;
 }
 
-@media (hover: hover) {
-  .carte:hover {
-    transform: translateY(-4px) rotate(-0.4deg);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.18);
-  }
-}
-
-.entete {
+.auteur {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
-.avatar {
+/* Monogramme : texte-2 sur nuit-800 (7,7:1). */
+.monogramme {
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--jaune);
-  color: var(--noir);
-  font-family: var(--font-texte);
-  font-weight: 700;
-  font-size: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--nuit-800);
+  color: var(--texte-2);
+  font-weight: 500;
+  font-size: 1.0625rem;
 }
 
-.identite {
+.qui {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
 .nom {
-  font-family: var(--font-texte);
-  font-weight: 600;
-  font-size: 1.25rem;
-  line-height: 1.2;
+  color: var(--nuit-900);
+  font-weight: 500;
+  font-size: 1.0625rem;
 }
 
-.etoiles {
-  display: flex;
-  color: var(--orange);
-}
-
-.etoileVide {
-  opacity: 0.25;
+.detail {
+  color: var(--texte-3-clair);
+  font-size: 0.875rem;
 }
 
 .texte {
-  white-space: pre-line;
-}
-
-@media (max-width: 767px) {
-  .carte {
-    padding: 20px;
-  }
-
-  .avatar {
-    width: 40px;
-    height: 40px;
-    font-size: 1.125rem;
-  }
-
-  .nom {
-    font-size: 1.0625rem;
-  }
+  color: var(--nuit-900);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.55;
 }

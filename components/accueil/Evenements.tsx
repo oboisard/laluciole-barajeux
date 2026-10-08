@@ -1,68 +1,113 @@
+import Image from 'next/image';
+import ACompleter from '@/components/ACompleter';
 import Button from '@/components/Button';
-import CarteEvent from '@/components/CarteEvent';
+import Icon from '@/components/Icon';
 import type { EvenementAffiche } from '@/lib/evenements';
+import { image } from '@/lib/images';
+import { liens } from '@/lib/site';
 import styles from './Evenements.module.css';
 
-// Section « nos event » (Figma 23:72) sur sa vague jaune (Figma 74:482).
+const lienCta = (e: EvenementAffiche) => (e.cta.type === 'carte' ? '/#carte' : liens.reserver);
+
+// Section événements (Redesign Finale, Figma 116:384) : l'événement mis en avant en
+// grande carte, les trois autres plus proches dans l'agenda (liste déjà triée par date).
 export default function Evenements({ evenements }: { evenements: EvenementAffiche[] }) {
-  const affiches = [...evenements].sort((a, b) => Number(b.miseEnAvant) - Number(a.miseEnAvant)).slice(0, 4);
+  const vedette = evenements.find((e) => e.miseEnAvant) ?? evenements[0];
+  const agenda = evenements.filter((e) => e !== vedette).slice(0, 3);
 
   return (
-    <section id="evenements" className={`section ${styles.section}`} aria-labelledby="titre-evenements">
-      <Vague />
+    <section id="evenements" className={`container section ${styles.section}`} aria-labelledby="titre-evenements">
+      <div className={styles.entete} data-apparition>
+        <h2 id="titre-evenements" className="t-titre">
+          Soirées jeux et tournois chaque semaine
+        </h2>
+        <p className="t-corps-l">
+          Tournois, soirées à thème, jeux de rôle grandeur nature : chaque semaine, des événements pour tous les niveaux.
+        </p>
+      </div>
 
-      <div className={`container ${styles.contenu}`}>
-        <div className={styles.entete}>
-          <div className={`${styles.texte} reveal`}>
-            <h2 id="titre-evenements" className="t-montserrat-h3">
-              Soirées jeux et tournois chaque semaine
-            </h2>
-            <p className="t-outfit-20">
-              Tournois, soirées à thème, jeux de rôle grandeur nature : chaque semaine, notre bar à jeux de Mérignac
-              propose des événements pour tous les niveaux. Consultez le programme et réservez votre table.
-            </p>
+      <div className={styles.evenements}>
+        {vedette && <Vedette evenement={vedette} />}
+        {agenda.length > 0 && (
+          <div className={`bezel ${styles.agendaCadre}`} data-apparition>
+            <ul role="list" className={`bezel-coeur ${styles.agenda}`}>
+              {agenda.map((e) => (
+                <LigneAgenda key={e.id} evenement={e} />
+              ))}
+            </ul>
           </div>
-          <div className={`${styles.ce} reveal`}>
-            <p className="t-outfit-24b">Envie de réserver une soirée CE ?</p>
-            <Button href="#team-building" variant="blanc-bleue" icon="telephone">
-              Nous contacter
-            </Button>
-          </div>
-        </div>
-
-        <ul className={styles.cartes} role="list">
-          {affiches.map((e, i) => (
-            <li key={e.id} className={i === 0 ? styles.grande : undefined}>
-              <CarteEvent
-                evenement={e}
-                grande={i === 0}
-                sizes={
-                  i === 0
-                    ? '(min-width: 1200px) 34vw, (min-width: 768px) 90vw, 92vw'
-                    : '(min-width: 1200px) 20vw, (min-width: 768px) 45vw, 92vw'
-                }
-              />
-            </li>
-          ))}
-        </ul>
+        )}
       </div>
     </section>
   );
 }
 
-// Fond jaune à bords ondulés : bord haut et bord bas en SVG (proportions gardées
-// quelle que soit la hauteur de la section), corps uni entre les deux.
-function Vague() {
+function Vedette({ evenement: e }: { evenement: EvenementAffiche }) {
+  const img = image(e.image);
   return (
-    <div className={styles.vague} aria-hidden="true">
-      {/* Les tracés débordent de 3 unités sur le corps (overflow visible) : pas de liseré au raccord. */}
-      <svg className={styles.vagueHaut} viewBox="0 0 1920 56" preserveAspectRatio="none" overflow="visible" focusable="false">
-        <path d="M0 3.8C0 3.8 345.427 54.844 573.5 52.76C844.803 50.281 976.241 22.546 1246.75 3.8C1509.96 -14.441 1920 38.923 1920 38.923V59H0Z" />
-      </svg>
-      <div className={styles.vagueCorps} />
-      <svg className={styles.vagueBas} viewBox="0 0 1920 64" preserveAspectRatio="none" overflow="visible" focusable="false">
-        <path d="M0 -3H1920V31.898C1920 31.898 1513.81 2.276 1246.75 14.59C972.501 27.235 826.251 46.688 552.097 60.89C326.446 72.578 0 31.898 0 31.898Z" />
-      </svg>
-    </div>
+    <article id={e.id} className={`bezel ${styles.vedette}`} data-apparition>
+      <div className={`bezel-coeur ${styles.vedetteCoeur}`}>
+        <Image
+          src={img.src}
+          fill
+          alt={e.alt}
+          placeholder="blur"
+          blurDataURL={img.blurDataURL}
+          sizes="(min-width: 1200px) 52vw, 100vw"
+          className={styles.vedetteImage}
+        />
+        <div className={styles.voile} aria-hidden="true" />
+        <div className={styles.vedetteContenu}>
+          <p className={styles.quand}>{e.quand ?? <ACompleter>date et heure</ACompleter>}</p>
+          <p className={styles.vedetteTitre}>{e.titre}</p>
+          <p className={styles.vedetteTexte}>{e.description || <ACompleter>texte de présentation</ACompleter>}</p>
+          <Button href={lienCta(e)} className={styles.vedetteBouton}>
+            {e.cta.label}
+          </Button>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function LigneAgenda({ evenement: e }: { evenement: EvenementAffiche }) {
+  const img = image(e.image);
+  const href = lienCta(e);
+  const externe = href?.startsWith('http');
+  return (
+    <li id={e.id} className={styles.ligne}>
+      <p className={styles.date}>
+        {e.jour ? (
+          <>
+            <span className={styles.numero}>{e.jour.numero}</span>
+            <span className={styles.mois}>{e.jour.mois}</span>
+          </>
+        ) : (
+          <ACompleter>date</ACompleter>
+        )}
+      </p>
+      <div className={styles.infos}>
+        <p className="t-titre-carte">{e.titre}</p>
+        {e.meta && <p className={styles.meta}>{e.meta}</p>}
+        {href ? (
+          <a
+            href={href}
+            className={styles.lien}
+            aria-label={`${e.cta.label} : ${e.titre}`}
+            {...(externe ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          >
+            {e.cta.label}
+            <Icon name="arrowForward" size={16} />
+          </a>
+        ) : (
+          <span className={styles.lien} aria-disabled="true">
+            {e.cta.label}
+          </span>
+        )}
+      </div>
+      <div className={styles.vignette}>
+        <Image src={img.src} fill alt={e.alt} sizes="112px" className={styles.vignetteImage} />
+      </div>
+    </li>
   );
 }

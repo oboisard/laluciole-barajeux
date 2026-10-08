@@ -15,6 +15,7 @@ export function siteUrl(): string {
 export const adresse = {
   ligne: `${site.adresse.rue}, ${site.adresse.codePostal} ${site.adresse.ville}`,
   courte: `${site.adresse.rue} à ${site.adresse.ville}`,
+  courteVirgule: `${site.adresse.rue}, ${site.adresse.ville}`,
 };
 
 const destination = encodeURIComponent(`${site.nom}, ${adresse.ligne}`);
@@ -43,7 +44,7 @@ export const liens = {
 
 export type LigneHoraire = { jours: string; texte: string; ferme: boolean };
 
-/** Regroupe les jours consécutifs aux horaires identiques : « Lundi - Mardi / Fermé ». */
+/** Regroupe les jours consécutifs aux horaires identiques : « Lundi, mardi / Fermé », « Mercredi - Vendredi ». */
 export function horairesGroupes(): LigneHoraire[] {
   const lignes: { jours: string[]; texte: string; ferme: boolean }[] = [];
   for (const h of site.horaires) {
@@ -54,7 +55,12 @@ export function horairesGroupes(): LigneHoraire[] {
     else lignes.push({ jours: [h.label], texte, ferme });
   }
   return lignes.map((l) => ({
-    jours: l.jours.length > 1 ? `${l.jours[0]} - ${l.jours.at(-1)}` : l.jours[0],
+    jours:
+      l.jours.length === 2
+        ? `${l.jours[0]}, ${l.jours[1].toLowerCase()}`
+        : l.jours.length > 2
+          ? `${l.jours[0]} - ${l.jours.at(-1)}`
+          : l.jours[0],
     texte: l.texte,
     ferme: l.ferme,
   }));

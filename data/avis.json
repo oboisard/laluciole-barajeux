@@ -1,40 +1,46 @@
 {
-  "_info": "Sélection d'avis Google (texte recopié tel quel). date : AAAA-MM-JJ, obligatoire à l'affichage (art. L111-7-2 du Code de la consommation). auteur : prénom + initiale du nom.",
+  "_info": "Sélection d'avis Google. auteur : prénom + initiale du nom. date : AAAA-MM-JJ, obligatoire à l'affichage (art. L111-7-2 du Code de la consommation). extrait : passage affiché sur l'accueil (coupé dans le texte, sans le modifier) ; texte : avis complet, recopié tel quel. La note moyenne et le nombre d'avis sont dans data/site.json (noteGoogle), à mettre à jour à la main.",
   "avis": [
     {
       "auteur": "Juliette S.",
       "note": 5,
       "date": null,
+      "extrait": "Bar à jeux très sympa ! Nous avons été très bien reçu et les jeux sont très bien expliqués.",
       "texte": "Bar à jeux très sympa ! Nous avons été très bien reçu et les jeux sont très bien expliqués. Au plaisir d'y retourner.\nOn peut manger et boire sur place."
     },
     {
       "auteur": "Ophélie G.",
       "note": 5,
       "date": null,
+      "extrait": "Nous étions débutantes. Le Maître du jeu était parfait et les autres participants hyper chaleureux.",
       "texte": "On y passe un très bon moment!\n\nJe suis venue avec 2 copines pour une soirée Loup Garou. Nous étions débutantes.\nLe Maître du jeu était parfait et les autres participants ( des inconnus) hyper chaleureux.\n\nOn peut boire un verre et manger un morceau. On s’y sent bien.\nMerci"
     },
     {
       "auteur": "Moe",
       "note": 5,
       "date": null,
+      "extrait": "Un bar à jeux très cosy au centre de Mérignac. L’équipe offre une très large sélection de jeux.",
       "texte": "Un bar à jeux très cosy au centre de Mérignac. L'équipe offre une très large sélection de jeux, des conseils pour les prendre en main et de nombreuses gourmandises à partager — ou pas, pour un tarif très abordable. Allez-y vite, vous ne le regretterez pas ! 😊"
     },
     {
       "auteur": "Z. Lucas",
       "note": 5,
       "date": null,
+      "extrait": "Énorme choix de jeux, super ambiance, déco aux petits soins (jusque dans les toilettes !).",
       "texte": "Vous ne serez pas déçu.\n\nÉnorme choix de jeux, super ambiance, déco aux petits soins (jusque dans les toilettes !), prix corrects, personnel aux petits soins et gérants passionnés qui ne comptent pas leurs heures.\n\nSoirées à thème presque tous les soirs ou aprem (jeux d'ambiance, jeux de rôle, échecs...) avec toujours la possibilité de ne pas y participer et de jouer de votre côté aux jeux que vous souhaitez.\n\nSeul ou à plusieurs, Lucile et Olivier se feront un plaisir de vous accueillir et de vous expliquer n'importe quel jeu. Foncez !"
     },
     {
       "auteur": "Valentin P.",
       "note": 5,
       "date": null,
+      "extrait": "Ambiance au top ! Offre de snacking et de jeux vraiment complète et pour tous les goûts.",
       "texte": "Ambiance au top ! Offre de snacking et de jeux vraiment complète et pour tous les goûts.\nUn agenda d'animation excellent ! Si vous souhaitez faire des jeux et que vos amis sont jamais dispo.., pensez aux rencontres ludiques du bar..😉\n\nEt surtout Lucile et Olivier sont des joueurs passionnés et super agréable.\n\nRecommandé +++"
     },
     {
       "auteur": "Ghislaine",
       "note": 5,
       "date": null,
+      "extrait": "Bien accueillis par Lucile et Olivier, qui conseillent et expliquent les jeux.",
       "texte": "La Luciole est une très chouette bar à jeux ! Bien accueillis par Lucile et Olivier, qui conseillent et expliquent les jeux.\n\nTrès bonne ambiance, et de quoi grignoter avec des options végétariennes et des options sans lactose (mention spéciale pour le trio de tartinades). Prix très abordable."
     }
   ]

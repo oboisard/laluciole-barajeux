@@ -1,31 +1,33 @@
 .page {
-  padding-top: clamp(100px, 10vw, 140px);
+  padding-block: clamp(110px, 10vw, 150px) var(--section-bas);
 }
 
 .carte {
-  --focus: var(--jaune);
-
   position: relative;
   isolation: isolate;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   gap: 20px;
   min-height: 60vh;
-  justify-content: center;
   padding: clamp(28px, 5vw, 96px);
   overflow: hidden;
-  border-radius: var(--radius-bloc);
+  border-radius: var(--rayon-coeur);
   background:
-    radial-gradient(circle at 80% 20%, rgba(253, 198, 0, 0.25), transparent 40%),
-    var(--noir);
-  color: var(--blanc);
+    radial-gradient(circle at 80% 20%, rgba(236, 198, 96, 0.22), transparent 40%),
+    var(--nuit-900);
+  color: var(--creme);
 }
 
 .code {
-  font-family: var(--font-texte);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(5rem, 14vw, 12rem);
   line-height: 0.85;
-  color: var(--jaune);
+  letter-spacing: -0.04em;
+  color: var(--lueur);
+}
+
+.texte {
+  color: var(--texte-2);
 }

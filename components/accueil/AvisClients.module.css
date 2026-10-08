@@ -1,61 +1,97 @@
 .section {
   display: flex;
   flex-direction: column;
-  gap: clamp(32px, 3.3vw, 64px);
+  gap: clamp(40px, 3.75vw, 72px);
 }
 
 .entete {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
-/* 2 rangées de 4 : avis et photos intercalés (Figma). */
-.grille {
+/* Note 480 px, 96 px d'écart, grille d'avis 1024 px (à 1920 px). */
+.rangee {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(24px, 3.3vw, 64px);
+  grid-template-columns: minmax(0, 480fr) minmax(0, 1024fr);
+  align-items: start;
+  gap: clamp(48px, 5vw, 96px);
 }
 
-/* L'image ne doit pas dicter la hauteur de la rangée (ce sont les avis qui la fixent). */
+.noteCadre {
+  display: flex;
+}
+
+.note {
+  flex: 1;
+  background: var(--nuit-900);
+  color: var(--creme);
+}
+
 .photo {
   position: relative;
-  min-height: 327px;
+  height: 220px;
   overflow: hidden;
-  border-radius: var(--radius-bloc);
 }
 
-.photo img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.photoImage {
   object-fit: cover;
 }
 
-.pied {
+.noteInfos {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 36px 40px 40px;
+}
+
+.etoiles {
+  display: flex;
+  gap: 4px;
+  padding-bottom: 12px;
+  color: var(--lueur);
+}
+
+.moyenne {
+  display: block;
+  font-weight: 500;
+  font-size: clamp(5rem, 3rem + 5vw, 9rem);
+  line-height: 0.97;
+  letter-spacing: -0.04em;
+}
+
+.base {
+  display: block;
+  margin-bottom: 32px;
+  color: var(--texte-2);
+  font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+  line-height: 1.47;
+}
+
+/* Six avis sur deux colonnes : 40 px entre colonnes, 63 px entre rangées. */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(32px, 3.3vw, 63px) 40px;
 }
 
 @media (max-width: 1199px) {
-  .grille {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .rangee {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .noteCadre {
+    max-width: 560px;
   }
 }
 
-/* Mobile : grille qui s'adapte à la largeur (1 colonne sur téléphone, 2 en paysage). */
 @media (max-width: 767px) {
-  .grille {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-    gap: 16px;
+  .noteInfos {
+    padding: 28px 24px 28px;
   }
 
-  .photo {
-    min-height: 0;
-    aspect-ratio: 4 / 3;
+  .grille {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
   }
 }

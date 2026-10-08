@@ -1,33 +1,30 @@
 import ACompleter from '@/components/ACompleter';
-import Icon from '@/components/Icon';
 import styles from './Avis.module.css';
 
 export type AvisData = {
   auteur: string;
   note: number;
   date: string | null;
+  /** Passage affiché (coupé dans l'avis, sans le modifier). */
+  extrait: string;
   texte: string;
 };
 
 const dateFr = new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' });
 
-// Testimonial card (Figma 28:306).
-export default function Avis({ avis, className }: { avis: AvisData; className?: string }) {
+// Avis (Redesign Finale, « review ») : monogramme, prénom + initiale, note et date
+// (date obligatoire à l'affichage, art. L111-7-2 du Code de la consommation).
+export default function Avis({ avis }: { avis: AvisData }) {
   return (
-    <figure className={`${styles.carte} ${className ?? ''}`}>
-      <figcaption className={styles.entete}>
-        <span className={styles.avatar} aria-hidden="true">
+    <figure className={styles.avis}>
+      <figcaption className={styles.auteur}>
+        <span className={styles.monogramme} aria-hidden="true">
           {avis.auteur.charAt(0)}
         </span>
-        <span className={styles.identite}>
+        <span className={styles.qui}>
           <span className={styles.nom}>{avis.auteur}</span>
-          <span className={styles.etoiles} role="img" aria-label={`Note : ${avis.note} sur 5`}>
-            {Array.from({ length: 5 }, (_, i) => (
-              <Icon key={i} name="etoile" size={15} className={i < avis.note ? undefined : styles.etoileVide} />
-            ))}
-          </span>
-          <span className="t-outfit-14">
-            Avis Google,{' '}
+          <span className={styles.detail}>
+            {avis.note} étoiles ·{' '}
             {avis.date ? (
               <time dateTime={avis.date}>{dateFr.format(new Date(avis.date))}</time>
             ) : (
@@ -36,8 +33,8 @@ export default function Avis({ avis, className }: { avis: AvisData; className?: 
           </span>
         </span>
       </figcaption>
-      <blockquote className={`t-outfit-16 ${styles.texte}`}>
-        <p>{avis.texte}</p>
+      <blockquote className={styles.texte}>
+        <p>{avis.extrait}</p>
       </blockquote>
     </figure>
   );

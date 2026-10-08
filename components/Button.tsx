@@ -2,20 +2,23 @@ import Link from 'next/link';
 import Icon, { type IconName } from '@/components/Icon';
 import styles from './Button.module.css';
 
-// Variantes de couleur du composant « Déclinaison » (Figma 1:190).
-// « blanc-bleue » : bouton « Nous contacter » de la section événements (texte bleu sur blanc).
-export type ButtonVariant = 'noir' | 'noir-jaune' | 'noir-bleue' | 'blanc' | 'blanc-bleue' | 'bleue' | 'orange';
+// Boutons du Redesign Finale : pilule, libellé puis flèche dans une pastille ronde.
+// « primaire » : fond lueur (Réserver, Voir la carte, Demander un devis).
+// « secondaire » : verre clair, sur fond sombre ou photo.
+export type ButtonVariant = 'primaire' | 'secondaire';
 
 type ButtonProps = {
-  children?: React.ReactNode;
-  /** Lien interne (/…), ancre (#…), externe (https:, tel:, mailto:). `null` = lien pas encore renseigné. */
+  children: React.ReactNode;
+  /** Lien interne (/…), ancre (#…), externe (https:, tel:). `null` = lien pas encore renseigné. */
   href?: string | null;
   variant?: ButtonVariant;
+  /** « compacte » : menu, cartes (pastille de 36 px au lieu de 44). */
+  taille?: 'normale' | 'compacte';
   icon?: IconName;
-  /** Variante « Icon » du master bouton : icône seule, `label` obligatoire. */
+  /** Nom accessible, s'il doit préciser le libellé visible (qu'il doit contenir). */
   label?: string;
   external?: boolean;
-  /** Entoure de pointillés jaunes un bouton dont le lien reste à fournir (`href={null}`). */
+  /** Entoure de pointillés un bouton dont le lien reste à fournir (`href={null}`). */
   signalerLienManquant?: boolean;
   className?: string;
   onClick?: () => void;
@@ -25,8 +28,9 @@ type ButtonProps = {
 export default function Button({
   children,
   href,
-  variant = 'noir',
-  icon,
+  variant = 'primaire',
+  taille = 'normale',
+  icon = 'arrowForward',
   label,
   external,
   signalerLienManquant,
@@ -35,12 +39,15 @@ export default function Button({
   type = 'button',
   ...aria
 }: ButtonProps) {
-  const iconOnly = !children;
-  const classes = [styles.button, styles[variant], iconOnly && styles.iconOnly, className].filter(Boolean).join(' ');
-  const content = (
+  const classes = [styles.bouton, styles[variant], taille === 'compacte' && styles.compacte, className]
+    .filter(Boolean)
+    .join(' ');
+  const contenu = (
     <>
-      {icon && <Icon name={icon} className={styles.icon} />}
-      {children && <span>{children}</span>}
+      <span className={styles.libelle}>{children}</span>
+      <span className={styles.pastille} aria-hidden="true">
+        <Icon name={icon} size={taille === 'compacte' ? 18 : 20} />
+      </span>
     </>
   );
 
@@ -56,7 +63,7 @@ export default function Button({
         title="Lien à compléter"
         {...aria}
       >
-        {content}
+        {contenu}
       </span>
     );
   }
@@ -64,7 +71,7 @@ export default function Button({
   if (href === undefined) {
     return (
       <button type={type} className={classes} onClick={onClick} aria-label={label} {...aria}>
-        {content}
+        {contenu}
       </button>
     );
   }
@@ -72,7 +79,7 @@ export default function Button({
   if (href.startsWith('/')) {
     return (
       <Link href={href} className={classes} aria-label={label} {...aria}>
-        {content}
+        {contenu}
       </Link>
     );
   }
@@ -86,7 +93,7 @@ export default function Button({
       {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       {...aria}
     >
-      {content}
+      {contenu}
     </a>
   );
 }

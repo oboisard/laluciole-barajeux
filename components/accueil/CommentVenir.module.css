@@ -1,147 +1,176 @@
-/* Carte Google Maps en grand ; titre, texte et horaires dans un panneau ancré dans
-   le coin haut gauche (grand écran). Ancré et non flottant : il recouvre entièrement
-   la fiche que Google affiche dans ce coin, qui dépasserait sinon autour du panneau.
-   Le repère du bar, au centre de la carte, reste visible. */
-.plan {
-  --focus: var(--jaune);
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 2.9vw, 56px);
+}
 
-  position: relative;
-  isolation: isolate;
-  height: clamp(640px, 46vw, 880px);
-  overflow: hidden;
-  border-radius: var(--radius-bloc);
-  /* Gris de fond de Google Maps : pas de flash pendant le chargement. */
+.entete {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.entete p {
+  max-width: 620px;
+}
+
+/* Cadre de 1600 × 780, cœur de 768 px de haut (à 1920 px). */
+.coeur {
+  height: clamp(600px, 40vw, 768px);
   background: #e5e3df;
 }
 
 .carte {
   position: absolute;
   inset: 0;
+  overflow: hidden;
+}
+
+/* La fiche que Google affiche en haut à gauche de la carte dépasserait autour de
+   l'encadré : l'iframe remonte de 160 px, hors du cadre. Le logo et les mentions
+   Google, en bas, restent visibles. */
+.iframe {
+  position: absolute;
+  top: -160px;
+  left: 0;
   display: block;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 160px);
   border: 0;
 }
 
-.panneau {
-  --r: var(--radius-card);
-
+/* Voile nuit léger (Figma « map_tint »), sans bloquer la carte. */
+.teinte {
   position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  width: min(560px, 38%);
-  max-height: 100%;
-  padding: clamp(28px, 2.5vw, 48px);
-  border-radius: 0 0 var(--r) 0;
-  background: var(--noir);
-  color: var(--blanc);
-}
-
-/* Raccords arrondis (concaves) entre le panneau et les bords de la carte :
-   à droite du panneau sur le bord haut, sous le panneau sur le bord gauche. */
-.panneau::before,
-.panneau::after {
-  content: '';
-  position: absolute;
-  width: var(--r);
-  height: var(--r);
-  background: radial-gradient(circle at 100% 100%, transparent calc(var(--r) - 0.5px), var(--noir) var(--r));
+  inset: 0;
+  background: rgba(11, 21, 22, 0.28);
   pointer-events: none;
 }
 
-.panneau::before {
-  top: 0;
-  left: 100%;
+/* Encadré flottant : 40 px du bord, 460 px de large, nuit-900 à 96 %. */
+.encadre {
+  position: absolute;
+  z-index: 1;
+  top: 40px;
+  left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  width: min(460px, calc(100% - 80px));
+  padding: 36px;
+  border: 1px solid var(--ligne-8);
+  border-radius: var(--rayon-interne);
+  background: rgba(17, 33, 34, 0.96);
+  color: var(--creme);
+  box-shadow:
+    var(--ombre-carte),
+    var(--reflet);
 }
 
-.panneau::after {
-  top: 100%;
-  left: 0;
-}
-
-.entete {
+.acces {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--ligne-8);
 }
 
-/* Jaune sur noir : ≈ 11,8:1. */
-.adresse {
-  font-weight: 700;
-  color: var(--jaune);
+.acces li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 500;
+  font-size: 1.0625rem;
+}
+
+.acces svg {
+  flex-shrink: 0;
+  color: var(--lueur);
+}
+
+.acces a {
+  text-decoration: none;
+}
+
+.acces a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .horaires {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
+  gap: 14px;
+  width: 100%;
+}
+
+.horairesTitre {
+  font-weight: 500;
+  font-size: 1.25rem;
+  letter-spacing: -0.005em;
 }
 
 .horaires dl {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 14px;
 }
 
 .horaires dl div {
   display: flex;
-  gap: 0.3em;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 1.0625rem;
 }
 
-.horaires dt::after {
-  content: ' /';
+.horaires dt {
+  color: var(--texte-2);
 }
 
 .horaires dd {
   margin: 0;
+  font-weight: 500;
 }
 
-.ferme {
-  font-weight: 700;
+.ferme dd {
+  color: var(--texte-3);
 }
 
-/* Tablette et mobile : le panneau couvrirait le repère du bar. Panneau au-dessus,
-   carte en dessous, dans le même bloc arrondi. */
+/* Tablette et mobile : l'encadré couvrirait le repère du bar. Encadré au-dessus,
+   carte en dessous, dans le même cadre. */
 @media (max-width: 1199px) {
-  .plan {
+  .coeur {
     display: flex;
     flex-direction: column;
     height: auto;
-    background: var(--noir);
+    background: var(--nuit-900);
   }
 
-  .panneau {
+  .encadre {
     position: static;
     width: auto;
-    max-height: none;
-    padding: clamp(24px, 4vw, 40px);
+    border: 0;
     border-radius: 0;
-  }
-
-  .panneau::before,
-  .panneau::after {
-    display: none;
+    box-shadow: none;
+    background: var(--nuit-900);
   }
 
   .carte {
-    position: static;
+    position: relative;
     height: clamp(360px, 60vw, 560px);
     background: #e5e3df;
   }
+
+  .iframe {
+    top: 0;
+    height: 100%;
+  }
 }
 
-/* Tablette : texte à gauche, horaires à droite. */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .panneau {
-    display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-    align-items: start;
-    gap: 32px 48px;
+@media (max-width: 767px) {
+  .encadre {
+    padding: 28px 24px;
   }
 }

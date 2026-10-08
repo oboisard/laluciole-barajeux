@@ -14,7 +14,8 @@ const JOURS_FR: Record<string, string> = {
   Saturday: 'samedi',
 };
 
-export type CtaType = 'reserver' | 'telephone' | 'carte';
+/** reserver : réservation en ligne (L'Addition) ; carte : section « La carte ». */
+export type CtaType = 'reserver' | 'carte';
 
 export type Evenement = {
   id: string;
@@ -32,8 +33,12 @@ export type Evenement = {
 };
 
 export type EvenementAffiche = Evenement & {
-  /** Libellé affiché sous le titre, null si la date reste à compléter. */
-  libelle: string | null;
+  /** Quand : « Chaque mercredi, 19h », « Jeudi 16 juillet, 19h » ; null si la date reste à compléter. */
+  quand: string | null;
+  /** Bloc date de l'agenda (« 16 » / « juil. ») ; null sans date. */
+  jour: { numero: string; mois: string } | null;
+  /** Ligne sous le titre dans l'agenda : « Jeudi · 19h », ou l'horaire seul sans date. */
+  meta: string | null;
   /** Dates ISO des prochaines occurrences (pour le schema Event). */
   occurrences: string[];
 };
@@ -61,16 +66,25 @@ function decalageParis(iso: string): string {
   return nom?.replace('GMT', '') || '+01:00';
 }
 
-/** « 19:00 » → « 19H », « 19:30 » → « 19H30 » (format de la maquette). */
+/** « 19:00 » → « 19h », « 19:30 » → « 19h30 ». */
 export function heureCourte(heure: string): string {
   const [h, m] = heure.split(':');
-  return `${Number(h)}H${m === '00' ? '' : m}`;
+  return `${Number(h)}h${m === '00' ? '' : m}`;
 }
 
-function libelleDate(iso: string): string {
+const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+const MOIS_COURTS = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+
+const majuscule = (texte: string) => texte.charAt(0).toUpperCase() + texte.slice(1);
+const minuscule = (texte: string) => texte.charAt(0).toLowerCase() + texte.slice(1);
+
+function nomJour(iso: string): string {
+  return majuscule(JOURS_FR[jourSemaine(iso)]);
+}
+
+function blocJour(iso: string) {
   const [, mois, jour] = iso.split('-');
-  const nomJour = JOURS_FR[jourSemaine(iso)];
-  return `${nomJour.charAt(0).toUpperCase()}${nomJour.slice(1)} ${jour}/${mois}`;
+  return { numero: String(Number(jour)), mois: MOIS_COURTS[Number(mois) - 1] };
 }
 
 function prochainesDates(jour: string, n: number): string[] {
@@ -84,28 +98,46 @@ function preparer(e: Evenement): EvenementAffiche {
 
   if (e.recurrence) {
     const dates = prochainesDates(e.recurrence.jour, 4);
+    const heure = heureCourte(e.recurrence.heure);
     return {
       ...e,
-      libelle: `Tous les ${JOURS_FR[e.recurrence.jour]}s - ${heureCourte(e.recurrence.heure)}`,
+      quand: `Chaque ${JOURS_FR[e.recurrence.jour]}, ${heure}`,
+      jour: blocJour(dates[0]),
+      meta: `${majuscule(JOURS_FR[e.recurrence.jour])} · ${heure}`,
       occurrences: dates.map((d) => `${d}T${e.recurrence!.heure}:00${decalageParis(d)}`),
     };
   }
 
   if (e.date) {
+    const [, mois, jour] = e.date.split('-');
+    const date = `${nomJour(e.date)} ${Number(jour)} ${MOIS[Number(mois) - 1]}`;
     return {
       ...e,
-      libelle: horaire ? `${libelleDate(e.date)} - ${horaire}` : libelleDate(e.date),
+      quand: horaire ? `${date}, ${minuscule(horaire)}` : date,
+      jour: blocJour(e.date),
+      meta: horaire ? `${nomJour(e.date)} · ${minuscule(horaire)}` : nomJour(e.date),
       occurrences: [e.heure ? `${e.date}T${e.heure}:00${decalageParis(e.date)}` : e.date],
     };
   }
 
-  return { ...e, libelle: null, occurrences: [] };
+  return { ...e, quand: null, jour: null, meta: horaire, occurrences: [] };
 }
 
-/** Événements à afficher : les événements datés déjà passés sont retirés. */
+/** Par prochaine date (les récurrents à leur prochaine occurrence) ; sans date en dernier, dans l'ordre du fichier. */
+function parDate(a: EvenementAffiche, b: EvenementAffiche): number {
+  const [da] = a.occurrences;
+  const [db] = b.occurrences;
+  if (!da || !db) return (da ? 0 : 1) - (db ? 0 : 1);
+  return da < db ? -1 : da > db ? 1 : 0;
+}
+
+/** Événements à afficher, du plus proche au plus lointain : les événements datés déjà passés sont retirés. */
 export function getEvenements(): EvenementAffiche[] {
   const jour = aujourdhui();
-  return (data.evenements as Evenement[]).filter((e) => !e.date || e.date >= jour).map(preparer);
+  return (data.evenements as Evenement[])
+    .filter((e) => !e.date || e.date >= jour)
+    .map(preparer)
+    .sort(parDate);
 }
 
 /** Schema.org Event pour chaque occurrence à venir (les actus et les dates à compléter sont ignorées). */

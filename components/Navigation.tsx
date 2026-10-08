@@ -68,7 +68,7 @@ export default function Navigation({ liensNav, piedMenu }: NavigationProps) {
           <li key={lien.href} style={{ '--i': i } as React.CSSProperties}>
             <Link
               href={lien.href}
-              className={`t-montserrat-h3 ${styles.lienMobile}`}
+              className={styles.lienMobile}
               aria-current={estActif(lien.href) ? 'page' : undefined}
               onClick={() => setOuvert(false)}
             >

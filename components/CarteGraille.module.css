@@ -1,84 +1,62 @@
+/* Carte de 402 px : cadre de 6 px autour d'une photo de 388 × 488, légende en dessous. */
 .carte {
-  position: relative;
-  isolation: isolate;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  height: 100%;
-  min-height: 360px;
-  padding: 24px 12px;
-  overflow: hidden;
-  border-radius: var(--radius-card);
-  background: var(--noir);
-  color: var(--blanc);
-  text-align: center;
-  transition:
-    transform 0.4s var(--ease-spring),
-    box-shadow 0.4s var(--ease-out);
+  gap: 20px;
+}
+
+.cadre {
+  display: flex;
+}
+
+.coeur {
+  flex: 1;
+  aspect-ratio: 388 / 488;
 }
 
 .image {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  transition: transform 0.8s var(--ease-out);
+  transition: transform 700ms var(--ease);
 }
 
-/* En attendant les photos : fond aux couleurs du bar, placeholder centré. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .carte:hover .image {
+    transform: scale(1.03);
+  }
+}
+
+/* En attendant les photos : surface nuit avec une lueur. */
 .placeholder {
   position: absolute;
   inset: 0;
-  z-index: -2;
   display: grid;
   place-items: center;
   padding: 24px;
   background:
-    radial-gradient(circle at 30% 25%, rgba(253, 198, 0, 0.35), transparent 45%),
-    radial-gradient(circle at 75% 70%, rgba(204, 87, 11, 0.45), transparent 50%),
-    linear-gradient(160deg, #1d3b3c, var(--noir));
+    radial-gradient(circle at 30% 25%, rgba(236, 198, 96, 0.28), transparent 50%),
+    var(--nuit-900);
 }
 
-.degrade {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(to bottom, rgba(18, 18, 18, 0), rgba(18, 18, 18, 0.7));
+.legende {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 8px;
 }
 
-.nom {
-  text-wrap: balance;
-}
-
-.prix {
-  color: var(--jaune);
-}
-
-/* La hauteur est donnée par la grille parente. */
-@media (max-width: 1199px) {
-  .carte {
-    min-height: 0;
-  }
+/* Gris foncé sur fond crème (4,9:1). */
+.composition {
+  color: var(--texte-3-clair);
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 @media (max-width: 767px) {
   .carte {
-    gap: 6px;
-    padding: 16px 10px;
-  }
-}
-
-@media (hover: hover) {
-  .carte:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 30px rgba(18, 18, 18, 0.28);
+    gap: 12px;
   }
 
-  .carte:hover .image {
-    transform: scale(1.07);
+  .legende {
+    padding-left: 4px;
   }
 }
